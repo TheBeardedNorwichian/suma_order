@@ -9,8 +9,10 @@ gem 'sass-rails', '~> 4.0.0.rc2'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
@@ -18,6 +20,7 @@ group :development, :test do
   gem 'spork-rails', github: 'railstutorial/spork-rails'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
+  gem 'awesome_print'
 end
 
 group :test do
