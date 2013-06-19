@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130617201700) do
+ActiveRecord::Schema.define(version: 20130619170747) do
 
   create_table "base_data", force: true do |t|
     t.string   "category_name"
@@ -32,5 +32,31 @@ ActiveRecord::Schema.define(version: 20130617201700) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "brands", force: true do |t|
+    t.string   "brand"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: true do |t|
+    t.string   "code"
+    t.string   "description"
+    t.string   "details"
+    t.integer  "price"
+    t.string   "size"
+    t.integer  "category_id"
+    t.integer  "brand_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items", ["code"], name: "index_items_on_code", unique: true
 
 end

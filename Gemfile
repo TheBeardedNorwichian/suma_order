@@ -13,6 +13,7 @@ gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'bootstrap-sass'
+gem 'annotate'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
