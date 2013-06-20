@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130619170747) do
+ActiveRecord::Schema.define(version: 20130620105021) do
 
   create_table "base_data", force: true do |t|
     t.string   "category_name"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20130619170747) do
     t.integer  "brand_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rrp"
   end
 
   add_index "items", ["code"], name: "index_items_on_code", unique: true

@@ -22,30 +22,6 @@
 #  updated_at    :datetime
 #
 
-# == Schema Information
-#
-# Table name: base_data
-#
-#  id            :integer          not null, primary key
-#  category_name :string(255)
-#  brand         :string(255)
-#  code          :string(255)
-#  description   :string(255)
-#  details       :string(255)
-#  size          :string(255)
-#  price         :decimal(, )
-#  vat           :boolean
-#  rrp           :decimal(, )
-#  b             :boolean
-#  f             :boolean
-#  g             :boolean
-#  o             :boolean
-#  s             :boolean
-#  v             :boolean
-#  created_at    :datetime
-#  updated_at    :datetime
-#
- 
 require 'spec_helper'
 
 describe BaseData do
@@ -53,7 +29,7 @@ describe BaseData do
   before do
     @row = BaseData.new(category_name: "BLAH BLAH", brand: "blah", code: "123TEST",
                         description: "This is a description", details: "and these are the details",
-                        size: "6 x 15", price: 50.00, vat: true, rrp: 5.45 )
+                        size: "6 x 15", price: 50.00, vat: true, rrp: 5.45)
   end
 
   subject { @row }

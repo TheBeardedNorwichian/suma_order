@@ -28,7 +28,7 @@ class Item < ActiveRecord::Base
   private
 
     def code_upper
-      self.code = code.uppercase
+      self.code = code.upcase
     end
 
 end
