@@ -1,14 +1,3 @@
-@font-face {
-    font-family: 'League Gothic';
-    src: asset-url('leaguegothic-regular-webfont.eot', font);
-    src: asset-url('leaguegothic-regular-webfont.eot?#iefix', font) format('embedded-opentype'),
-         asset-url('leaguegothic-regular-webfont.woff', font) format('woff'),
-         asset-url('leaguegothic-regular-webfont.ttf', font) format('truetype'),
-         asset-url('leaguegothic-regular-webfont.svg#league_gothicregular', font) format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
 @import "bootstrap";
 
 /* mixins, variables, etc. */
