@@ -1,14 +1,26 @@
-<h1>Hello</h1>
+<h1>Items</h1>
 
-  <table>
-<% @items.each do |x| %>
-    <tr>
-      <td><%= x.description %></td>
-      <td><%= number_to_currency(x.price, unit: "£") %></td>
-      <td><%= x.size %></td>
-      <td><%= x.code %></td>
-      <td><%= x.category.name %></td>
-      <td><%= x.brand != nil ? x.brand.name : "no brand" %></td>
-    </tr>
-  <% end %>
+  <table class="table table-striped table-hover table-condensed">
+    <thead>
+      <tr>
+        <th><%= link_to "Description", sort: "description" %></th>
+        <th><%= link_to "Price", sort: "price" %></th>
+        <th><%= link_to "Size", sort: "size" %></th>
+        <th><%= link_to "Code", sort: "code" %></th>
+        <th><%= link_to "Category", sort: "categories.name" %></th>
+        <th><%= link_to "Brand", sort: "brands.name" %></th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @items.each do |x| %>
+      <tr>
+        <td><%= x.description %></td>
+        <td><%= number_to_currency(x.price, unit: "£") %></td>
+        <td><%= x.size %></td>
+        <td class="table-code"><%= x.code %></td>
+        <td><%= x.category.name %></td>
+        <td><%= x.brand != nil ? x.brand.name : "no brand" %></td>
+      </tr>
+    <% end %>
+    </tbody>
   </table>

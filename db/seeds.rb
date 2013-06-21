@@ -15,7 +15,7 @@ require 'csv'
     end
   end
 
-#category_name[0], brand[1], code[2], description[3], details[4], size[5], price[6], vat[7], rrp[8], b[9], f[10], g[11], o[12], s[13], v[14] 
+# category_name[0], brand[1], code[2], description[3], details[4], size[5], price[6], vat[7], rrp[8], b[9], f[10], g[11], o[12], s[13], v[14] 
   CSV.foreach('db/CurrentSumaPrices.csv', headers: true) do |row|
     row = BaseData.create({
       category_name:  row[0].titleize,
@@ -23,7 +23,7 @@ require 'csv'
       code:           row[2].upcase,
       description:    row[3],
       details:        row[4],
-      size:           row[5],
+      size:           row[5].downcase,
       price:          row[6].to_d,
       vat:            row[7] == "1" ? true : false,
       rrp:            row[8] != nil ? row[8].to_d : 0,
@@ -44,15 +44,10 @@ require 'csv'
     Brand.create!(name: x)
   end
 
-
   BaseData.all.each do |x|
     Item.create!(
               id: x.id, code: x.code, description: x.description,
               details: x.details, size: x.size, rrp: x.rrp, price: x.price,
               category_id: id_find("category", x.category_name), 
-              brand_id: id_find("brand", x.brand)
-              )
+              brand_id: id_find("brand", x.brand))
   end
-
-
-

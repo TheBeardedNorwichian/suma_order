@@ -1,0 +1,25 @@
+<li id="fat-menu" class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <%= @current_user.name %> <b class="caret"></b>
+  </a>
+
+  <ul class="dropdown-menu">
+    <% if signed_in? %>
+    <li class="nav-header">My Stuff</li>
+    <li><%=link_to "My Teams", user_teams_url(@current_user.id) %></li>
+    <li><%=link_to "New Team", new_team_path %></li>
+    <% end %>
+    <% if admin? %>
+    <li class="divider"></li>
+    <li class="nav-header">Admin</li>
+    <li><%=link_to "New Player", new_player_path %></li>
+    <li><%=link_to "New Ground", new_ground_path %></li>
+    <% end %>
+        <li class="divider"></li>
+    <li><%= link_to "Profile", current_user %></li>
+    <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+    <li><%= link_to "Users", users_path %></li>
+    <li class="divider"></li>
+    <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+  </ul>
+</li>

@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all(limit: 50)
+    @items = Item.includes(:category, :brand).order(params[:sort]).limit(50)
   end
 
 end
