@@ -4,7 +4,6 @@ ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0.rc2'
-gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.0.rc2'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -14,6 +13,7 @@ gem 'turbolinks'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'bootstrap-sass'
 gem 'annotate'
+gem 'pg'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
@@ -22,6 +22,7 @@ group :development, :test do
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
   gem 'awesome_print'
+  gem 'sqlite3'
 end
 
 group :test do
