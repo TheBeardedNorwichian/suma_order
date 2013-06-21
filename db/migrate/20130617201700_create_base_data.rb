@@ -8,9 +8,9 @@ class CreateBaseData < ActiveRecord::Migration
       t.string  :description
       t.string  :details
       t.string  :size
-      t.decimal :price
+      t.decimal :price, precision: 8, scale: 2
       t.boolean :vat
-      t.decimal :rrp
+      t.decimal :rrp, precision: 8, scale: 2
       t.boolean :b 
       t.boolean :f 
       t.boolean :g 

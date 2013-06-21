@@ -1,0 +1,14 @@
+<h1>Hello</h1>
+
+  <table>
+<% @items.each do |x| %>
+    <tr>
+      <td><%= x.description %></td>
+      <td><%= number_to_currency(x.price, unit: "£") %></td>
+      <td><%= x.size %></td>
+      <td><%= x.code %></td>
+      <td><%= x.category.name %></td>
+      <td><%= x.brand != nil ? x.brand.name : "no brand" %></td>
+    </tr>
+  <% end %>
+  </table>
