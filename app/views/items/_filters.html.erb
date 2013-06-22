@@ -1,0 +1,38 @@
+<div class="btn-toolbar">
+  <div class="btn-group">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      Category
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <% @alpha_cats.keys.sort.each do |letter| %>
+      <li class="dropdown-submenu">
+        <a tabindex="-1" href="#"><%= "#{letter}" %></a>
+        <ul class="dropdown-menu">
+        <% @alpha_cats[letter].each do |category| %>
+          <li><%= link_to "#{category.name}", category_items_path(category.id) %></li>
+        <% end %>
+        </ul>
+      </li>
+      <% end %>
+    </ul>
+    </div>
+  <div class="btn-group">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      Brand
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <% @alpha_brands.keys.sort.each do |letter| %>
+      <li class="dropdown-submenu">
+        <a tabindex="-1" href="#"><%= letter %></a>
+        <ul class="dropdown-menu">
+        <% @alpha_brands[letter].each do |brand| %>
+          <li><%= link_to "#{brand.name}", brand_items_path(brand.id)%></li>
+        <% end %>
+        </ul>
+      </li>
+      <% end %>
+    </ul>
+    </div>
+</div>

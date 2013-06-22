@@ -1,6 +1,14 @@
 SumaOrder::Application.routes.draw do
 
   resources :items
+  
+  resources :categories do
+    resources :items
+  end
+
+  resources :brands do
+    resources :items
+  end
 
   root 'static_pages#index'
 

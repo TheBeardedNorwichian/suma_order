@@ -10,4 +10,8 @@
 
 class Brand < ActiveRecord::Base
   has_many :items
+
+  def self.alpha_list
+    Brand.all.group_by{ |u| u.name[0].upcase }
+  end
 end

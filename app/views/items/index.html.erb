@@ -1,14 +1,17 @@
+<%= render 'filters' %>
+
 <%= will_paginate %>
 
-  <table class="table table-striped table-hover table-condensed table-bordered">
+  <table class="table table-striped table-hover table-condensed table-bordered items-table">
     <thead>
       <tr>
         <th><%= link_to "Code", sort: "code" %></th>
         <th><%= link_to "Description", sort: "description" %></th>
-        <th><%= link_to "Brand", sort: "brands.name" %></th>
-        <th><%= link_to "Price", sort: "price" %></th>
+        <th>Brand</th>
+        <th>Category</th>
         <th><%= link_to "Size", sort: "size" %></th>
-        <th><%= link_to "Category", sort: "categories.name" %></th>
+        <th><%= link_to "Price", sort: "price" %></th>
+
       </tr>
     </thead>
     <tbody>
@@ -16,13 +19,13 @@
       <tr>
         <td class="table-code"><%= x.code %></td>
         <td><%= x.description %></td>
-        <td><%= x.brand != nil ? x.brand.name : "no brand" %></td>
-        <td><%= number_to_currency(x.price, unit: "£") %></td>
+        <td><%= x.brand != nil ?  link_to("#{x.brand.name}", brand_items_path(x.brand_id)): "N/A" %></td>
+        <td><%= link_to "#{x.category.name}", category_items_path(x.category_id) %></td>
         <td><%= x.size %></td>
-        <td><%= x.category.name %></td>
+        <td><%= number_to_currency(x.price, unit: "£") %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
 
-  <%= will_paginate %>
+<%= will_paginate %>

@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'League Gothic';
+    src: asset-url('leaguegothic-regular-webfont.eot', font);
+    src: asset-url('leaguegothic-regular-webfont.eot?#iefix', font) format('embedded-opentype'),
+         asset-url('leaguegothic-regular-webfont.woff', font) format('woff'),
+         asset-url('leaguegothic-regular-webfont.ttf', font) format('truetype'),
+         asset-url('leaguegothic-regular-webfont.svg#league_gothicregular', font) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @import "bootstrap";
 
 /* mixins, variables, etc. */
@@ -21,8 +32,16 @@ $grayMediumLight: #eaeaea;
 .hero-unit {
   background-image: image-url("BondStreet.jpg");
   background-size: 100%;
-  padding-left: 0px;
-  padding-right: 0px;
+  .hero-unit-inner {
+    padding-left: 0px;
+    padding-right: 0px;
+    opacity: 0.75;
+    h1 {
+      font-family: "League Gothic";
+      font-weight: normal;
+      letter-spacing: 5px;
+    }
+  }
 }
 
 .hero-unit-inner {
@@ -203,6 +222,37 @@ input {
   @extend .error;
 }
 
+/* Items */
+
 .table-code {
   font-weight: bold;
 }
+
+.show-info {
+  height: 50px;
+  width: 200px;
+  text-align: center;
+  vertical-align:middle;
+  background-color: cornflowerblue;
+  color: white;
+  display: none;
+  padding-top: 8px;
+  position: absolute;
+}
+
+.brand-list {
+   height: 300px;
+   overflow: auto;
+}
+
+/* navbar search */
+
+// .navbar-search {
+//   padding: 0px;
+//   margin: 0px;
+//   height: 41px;
+//   .search-query {
+//     height: 41px !important;
+//     font-size: 20px;
+//   }
+// }

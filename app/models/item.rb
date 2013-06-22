@@ -27,7 +27,7 @@ class Item < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, conditions: ['description LIKE ? OR code LIKE ?', "%#{search}%", "%#{search}%"])
+      find(:all, conditions: ['description LIKE ? OR code LIKE ?', "%#{search.capitalize}%", "%#{search.upcase}%"])
     else
       find(:all)
     end 
