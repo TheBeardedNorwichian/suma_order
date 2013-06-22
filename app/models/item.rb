@@ -25,6 +25,14 @@ class Item < ActiveRecord::Base
   validates :price, presence: true
   validates :size, presence: true
 
+  def self.search(search)
+    if search
+      find(:all, conditions: ['description LIKE ? OR code LIKE ?', "%#{search}%", "%#{search}%"])
+    else
+      find(:all)
+    end 
+  end
+
   private
 
     def code_upper

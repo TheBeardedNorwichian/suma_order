@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130620210733) do
+ActiveRecord::Schema.define(version: 20130621224734) do
 
   create_table "base_data", force: true do |t|
     t.string   "category_name"
@@ -59,5 +59,14 @@ ActiveRecord::Schema.define(version: 20130620210733) do
   end
 
   add_index "items", ["code"], name: "index_items_on_code", unique: true
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "remember_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
