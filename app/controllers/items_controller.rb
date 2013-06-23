@@ -8,8 +8,6 @@ class ItemsController < ApplicationController
     elsif !params[:brand_id].blank?
       @items = Item.where("brand_id = ?", params[:brand_id]).paginate(page: params[:page], order: params[:sort], per_page: 50).search(params[:search])
     end
-    @alpha_cats = Category.alpha_list
-    @alpha_brands = Brand.alpha_list
   end
 
 end

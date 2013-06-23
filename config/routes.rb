@@ -1,13 +1,13 @@
 SumaOrder::Application.routes.draw do
 
-  resources :items
+  resources :items, only: [:index]
   
-  resources :categories do
-    resources :items
+  resources :categories, only: [:index] do
+    resources :items, only: [:index]
   end
 
-  resources :brands do
-    resources :items
+  resources :brands, only: [:index] do
+    resources :items, only: [:index]
   end
 
   root 'static_pages#index'
