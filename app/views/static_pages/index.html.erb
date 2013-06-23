@@ -1,5 +1,10 @@
 <div class="hero-unit">
   <div class="hero-unit-inner">
     <h1>Bond Street:SUMA</h1>
+    <div class="center-p span4" style="opactiy: 100%;">
+    <%= form_tag items_path, method: :get, class: 'input-large search-query', style: 'opacity: 100%;' do %>
+      <%= text_field_tag :search, params[:search], class: 'search-query span4', placeholder: "Search items" %>
+    <% end %>
+    </div>
   </div>
 </div>

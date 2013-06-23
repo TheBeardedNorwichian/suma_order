@@ -13,11 +13,11 @@
 
 /* mixins, variables, etc. */
 
-* {
-  -webkit-border-radius: 0 !important;
-     -moz-border-radius: 0 !important;
-          border-radius: 0 !important;
-}
+// * {
+//   -webkit-border-radius: 0 !important;
+//      -moz-border-radius: 0 !important;
+//           border-radius: 0 !important;
+// }
 
 $grayMediumLight: #eaeaea;
 
@@ -33,22 +33,15 @@ $grayMediumLight: #eaeaea;
   background-image: image-url("BondStreet.jpg");
   background-size: 100%;
   .hero-unit-inner {
-    padding-left: 0px;
+    padding-left: 0px;  
     padding-right: 0px;
-    opacity: 0.75;
+    opacity: 0.90;
     h1 {
       font-family: "League Gothic";
       font-weight: normal;
       letter-spacing: 5px;
     }
   }
-}
-
-.hero-unit-inner {
-  background-color: white;
-  width: 100%;
-  margin-top: 80px;
-  margin-bottom: 80px;
 }
 
 /* universal */
@@ -76,6 +69,13 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+.center-p {
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
+     opacity: 100%;
 }
 
 /* typography */
@@ -190,11 +190,6 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -228,31 +223,8 @@ input {
   font-weight: bold;
 }
 
-.show-info {
-  height: 50px;
-  width: 200px;
-  text-align: center;
-  vertical-align:middle;
-  background-color: cornflowerblue;
-  color: white;
-  display: none;
-  padding-top: 8px;
-  position: absolute;
-}
-
 .filter-list {
    height: 300px;
    overflow: auto;
 }
 
-/* navbar search */
-
-// .navbar-search {
-//   padding: 0px;
-//   margin: 0px;
-//   height: 41px;
-//   .search-query {
-//     height: 41px !important;
-//     font-size: 20px;
-//   }
-// }

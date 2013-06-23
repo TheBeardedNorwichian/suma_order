@@ -4,18 +4,17 @@
       <%= link_to "Bond Street:SUMA", root_path, class: "brand" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to '<i class="icon-home"></i>'.html_safe, root_path %></li>
-          <li><%= link_to "Items", items_path %></li>
+        <li><%= link_to 'Products', items_path %></li>
+        <%= render 'items/filters' %>
           <li><%= link_to "Help", '#' %></li>
           <% if signed_in? %>
             <%= render 'layouts/user_menu' %>
             <% else %>
           <li><%= link_to "Sign in", signin_path %></li>
           <% end %>
-
         </ul>
         <%= form_tag items_path, method: :get, class: 'navbar-search pull-right'  do %>
-          <%= text_field_tag :search, params[:search], class: 'search-query span4', placeholder: "Search items" %>
+          <%= text_field_tag :search, params[:search], class: 'search-query span3', placeholder: "Search items" %>
         <% end %>
       </nav>
     </div>

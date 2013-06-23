@@ -1,24 +1,20 @@
-<div class="btn-toolbar">
-  <div class="btn-group">
-    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-      Category
-      <span class="caret"></span>
+<!-- Categories dropdown -->
+  <li id="fat-menu" class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      Categories <b class="caret"></b>
     </a>
     <ul class="dropdown-menu filter-list">
       <% Category.all.each do |category| %>
       <li><%= link_to "#{category.name}", category_items_path(category.id) %></li>
       <% end %>
     </ul>
-    </div>
-  <div class="btn-group">
-    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-      Brand
-      <span class="caret"></span>
+<!-- Brands dropdown -->
+  <li id="fat-menu" class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      Brands <b class="caret"></b>
     </a>
     <ul class="dropdown-menu filter-list">
       <% Brand.all.each do |brand| %>
       <li><%= link_to "#{brand.name}", brand_items_path(brand.id) %></li>
       <% end %>
     </ul>
-    </div>
-</div>
