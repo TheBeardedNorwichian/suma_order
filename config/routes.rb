@@ -1,6 +1,8 @@
 SumaOrder::Application.routes.draw do
 
   resources :items, only: [:index]
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
   
   resources :categories, only: [:index] do
     resources :items, only: [:index]
@@ -10,6 +12,9 @@ SumaOrder::Application.routes.draw do
     resources :items, only: [:index]
   end
 
+  match '/signup',  to: 'users#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
   root 'static_pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

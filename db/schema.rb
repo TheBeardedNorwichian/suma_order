@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130621224734) do
+ActiveRecord::Schema.define(version: 20130623200708) do
 
   create_table "base_data", force: true do |t|
     t.string   "category_name"
@@ -64,9 +64,12 @@ ActiveRecord::Schema.define(version: 20130621224734) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "remember_token"
+    t.string   "street"
+    t.integer  "house_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
+    t.boolean  "admin",           default: false
   end
 
 end

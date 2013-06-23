@@ -9,9 +9,9 @@
 #  description   :string(255)
 #  details       :string(255)
 #  size          :string(255)
-#  price         :decimal(, )
+#  price         :decimal(8, 2)
 #  vat           :boolean
-#  rrp           :decimal(, )
+#  rrp           :decimal(8, 2)
 #  b             :boolean
 #  f             :boolean
 #  g             :boolean

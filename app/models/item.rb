@@ -6,7 +6,8 @@
 #  code        :string(255)
 #  description :string(255)
 #  details     :string(255)
-#  price       :integer
+#  price       :decimal(8, 2)
+#  rrp         :decimal(8, 2)
 #  size        :string(255)
 #  category_id :integer
 #  brand_id    :integer
