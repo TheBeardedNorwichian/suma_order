@@ -19,8 +19,6 @@ class Item < ActiveRecord::Base
   belongs_to :category
   belongs_to :brand
 
-  before_save :code_upper
-
   validates :code, presence: true, uniqueness: { case_sensitive: false }
   validates :description, presence: true
   validates :price, presence: true
@@ -33,11 +31,5 @@ class Item < ActiveRecord::Base
       find(:all)
     end 
   end
-
-  private
-
-    def code_upper
-      self.code = code.upcase
-    end
 
 end

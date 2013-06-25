@@ -10,6 +10,8 @@
 #  house_number    :integer
 #  created_at      :datetime
 #  updated_at      :datetime
+#  remember_token  :string(255)
+#  admin           :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
