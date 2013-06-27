@@ -9,6 +9,8 @@
         <th>Category</th>
         <th><%= link_to "Size", sort: "size" %></th>
         <th><%= link_to "Price", sort: "price" %></th>
+        <th>RRP</th>
+        <th>Unit Price</th>
       </tr>
     </thead>
     <tbody>
@@ -20,6 +22,8 @@
         <td><%= link_to "#{x.category.name}", category_items_path(x.category_id) %></td>
         <td><%= x.size %></td>
         <td><%= number_to_currency(x.price, unit: "£") %></td>
+        <td><%= number_to_currency(x.rrp, unit: "£") %></td>
+        <td><i><%= number_to_currency(x.unit_price, unit: "£") %></i></td>
       </tr>
     <% end %>
     </tbody>

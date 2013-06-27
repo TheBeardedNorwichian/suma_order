@@ -13,6 +13,7 @@
 #  brand_id    :integer
 #  created_at  :datetime
 #  updated_at  :datetime
+#  unit_price  :decimal(8, 2)
 #
 
 require 'spec_helper'

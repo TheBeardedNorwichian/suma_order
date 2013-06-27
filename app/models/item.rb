@@ -13,11 +13,13 @@
 #  brand_id    :integer
 #  created_at  :datetime
 #  updated_at  :datetime
+#  unit_price  :decimal(8, 2)
 #
 
 class Item < ActiveRecord::Base
   belongs_to :category
   belongs_to :brand
+  has_many :items
 
   validates :code, presence: true, uniqueness: { case_sensitive: false }
   validates :description, presence: true
@@ -26,9 +28,11 @@ class Item < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, joins: [:category, :brand], conditions: ['description LIKE ? OR code LIKE ? or categories.name LIKE ? or brands.name LIKE ?', "%#{search.capitalize}%", "%#{search.upcase}%", "%#{search.capitalize}%", "%#{search.capitalize}%"])
+      sc = "%#{search.capitalize}%"
+      su = "%#{search.upcase}%"
+      joins(:category, :brand).where('description LIKE ? OR code LIKE ? or categories.name LIKE ? or brands.name LIKE ?', sc, su, sc, sc).all
     else
-      find(:all)
+      all
     end 
   end
 

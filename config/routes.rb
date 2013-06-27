@@ -1,7 +1,14 @@
 SumaOrder::Application.routes.draw do
 
   resources :items, only: [:index]
+
+  resources :groups do
+    resources :users
+    resources :orders
+  end
+
   resources :users
+
   resources :sessions, only: [:new, :create, :destroy]
   
   resources :categories, only: [:index] do

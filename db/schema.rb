@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130624215538) do
+ActiveRecord::Schema.define(version: 20130626233423) do
 
   create_table "base_data", force: true do |t|
     t.string   "category_name"
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 20130624215538) do
     t.datetime "updated_at"
   end
 
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.integer  "admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "items", force: true do |t|
     t.string   "code"
     t.string   "description"
@@ -56,9 +63,19 @@ ActiveRecord::Schema.define(version: 20130624215538) do
     t.integer  "brand_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "unit_price",  precision: 8, scale: 2
   end
 
   add_index "items", ["code"], name: "index_items_on_code", unique: true
+
+  create_table "orderitems", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "orders", force: true do |t|
     t.date     "open"
@@ -67,6 +84,7 @@ ActiveRecord::Schema.define(version: 20130624215538) do
     t.boolean  "order_sent"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
   end
 
   create_table "users", force: true do |t|
@@ -79,6 +97,7 @@ ActiveRecord::Schema.define(version: 20130624215538) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.boolean  "admin",           default: false
+    t.integer  "group_id"
   end
 
 end

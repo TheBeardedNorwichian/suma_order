@@ -1,19 +1,18 @@
 # == Schema Information
 #
-# Table name: orders
+# Table name: orderitems
 #
 #  id         :integer          not null, primary key
-#  open       :date
-#  deadline   :date
-#  delivery   :date
-#  order_sent :boolean
+#  order_id   :integer
+#  user_id    :integer
+#  item_id    :integer
+#  quantity   :integer
 #  created_at :datetime
 #  updated_at :datetime
-#  group_id   :integer
 #
 
 require 'spec_helper'
 
-describe Order do
+describe Orderitem do
   pending "add some examples to (or delete) #{__FILE__}"
 end

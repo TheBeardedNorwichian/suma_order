@@ -12,9 +12,14 @@
 #  updated_at      :datetime
 #  remember_token  :string(255)
 #  admin           :boolean          default(FALSE)
+#  group_id        :integer
 #
 
 class User < ActiveRecord::Base
+  belongs_to :group
+  has_many :orderitems
+  has_many :orders, through: :orderitems
+
   before_save :downcase_email
   before_save :create_remember_token
 
