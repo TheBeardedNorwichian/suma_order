@@ -75,7 +75,8 @@ require 'csv'
               street: "Bond Street",
               password: input, 
               password_confirmation: input, 
-              admin: true
+              admin: true,
+              group_id: 1
               )
   User.create!( 
               name: "Flo Harrison", 
@@ -84,7 +85,8 @@ require 'csv'
               street: "Bond Street",
               password: input, 
               password_confirmation: input, 
-              admin: false
+              admin: false,
+              group_id: 1
               )
 
   STDOUT.puts "Creating default group. . ."
