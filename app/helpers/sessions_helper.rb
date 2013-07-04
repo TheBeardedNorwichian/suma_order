@@ -17,6 +17,10 @@ module SessionsHelper
     @current_user ||= User.find_by(remember_token: cookies[:remember_token])
   end
 
+  def current_order
+    @current_user.group.current_order
+  end
+
   def current_user?(user)
     user == current_user
   end

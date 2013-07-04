@@ -3,15 +3,20 @@
   <aside class="span4">
     <section>
       <h1>
-          <%= @user.name %>
+        <%= @user.name %>
       </h1>
       <h2>
+        <%= @user.group.name %>
+       </h2>
+      <h2>
         <%= "#{@user.house_number} #{@user.street}" %>
+      </h2>
     </section>
     <section>
-
     </section>
   </aside>
   <div class="span8">
+    <h1>Orders</h1>
+    <%= render 'order_items', orders: @orders, user: @user %>
   </div>
 </div>

@@ -8,8 +8,8 @@
     <tbody>
   <% @groups.each do |x| %>
       <tr>
-        <td><%= x.name %></td>
-        <td><%= x.admin.name %></td>
+        <td><%= link_to "#{x.name}", group_path(x) %></td>
+        <td><%= x.admin? ? x.admin.name : "None Yet" %></td>
       </tr>
     <% end %>
     </tbody>

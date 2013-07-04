@@ -228,3 +228,14 @@ input {
    overflow: auto;
 }
 
+/* dropdown menu */
+.sign-in {
+  width: 250px;
+  padding: 10px;
+  padding-bottom: 10px;
+  form {
+    .btn {
+      width: 100%;
+    }
+  }
+}

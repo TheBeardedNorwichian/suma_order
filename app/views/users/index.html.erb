@@ -5,17 +5,21 @@
         <th>Email</th>
         <th>Address</th>
         <th>Group</th>
-        <th>Groupd Admin?</th>
+        <th>Groupd Admin</th>
+        <th>Edit User</th>
+        <th>Delete User</th>
       </tr>
     </thead>
     <tbody>
   <% @users.each do |x| %>
       <tr>
-        <td><%= x.name %></td>
+        <td><%= current_user.admin? ? (link_to "#{x.name}", user_path(x)) : "#{x.name}" %></td>
         <td><%= x.email %></td>
         <td><%= "#{x.house_number} #{x.street}" %></td>
         <td><%= x.group.name %></td>
         <td><%= x.group.admin == x ? "X" : "" %></td>
+        <td><%= current_user.admin? ? (link_to "Edit", edit_user_path(x)) : "n/a" %></td>
+        <td><%= link_to "Delete",  x, method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
     <% end %>
     </tbody>

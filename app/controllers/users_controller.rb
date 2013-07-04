@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :correct_user,    only: [:edit, :update]
-  before_action :admin_user,      only: [:index, :new, :create, :destroy]
+  before_action :admin_user,      only: [:index, :edit, :update, :new, :create, :destroy]
 
   def index
     @users = User.all
@@ -8,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @orders = @user.group.orders
   end
 
   def new
@@ -18,19 +18,20 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
         flash[:success] = "#{@user.name} created!"
-        redirect_to root_path
+        redirect_to new_user_path
       else
         render 'new'
       end
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = "All done - congratulations"
-      redirect_to root_path
+      flash[:success] = "#{@user.name} updated."
+      redirect_to users_path
     else
       render 'edit'
     end
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :group_id)
     end
 
     # Before filters
