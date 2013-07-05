@@ -14,6 +14,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  unit_price  :decimal(8, 2)
+#  vat         :boolean          default(FALSE)
 #
 
 class Item < ActiveRecord::Base
@@ -34,6 +35,12 @@ class Item < ActiveRecord::Base
     else
       all
     end 
+  end
+
+  def price_plus_vat
+    if self.vat
+      self.price = self.price * 1.20
+    end
   end
 
 end

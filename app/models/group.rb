@@ -13,6 +13,6 @@
 class Group < ActiveRecord::Base
   has_many :users
   has_many :orders, dependent: :destroy
-  has_one :current_order, class_name: 'Order', foreign_key: 'id'
+  belongs_to :current_order, class_name: 'Order', foreign_key: 'current_order'
   belongs_to :admin, class_name: 'User', foreign_key: 'admin'
 end

@@ -3,21 +3,21 @@
  <table class="table table-striped table-hover table-condensed table-bordered items-table">
     <thead>
       <tr>
+        <th>Code</th>
         <th>Description</th>
         <th>Category</th>
         <th>Brand</th>
         <th>Price</th>
-        <th>Quantity</th>
       </tr>
     </thead>
     <tbody>
   <% o.orderitems.each do |oi| %>
       <tr>
+        <td><strong><%= oi.item.code %></strong></td>
         <td><%= oi.item.description %></td>
         <td><%= oi.item.category.name %></td>
         <td><%= oi.item.brand.name %></td>
         <td><%= number_to_currency(oi.item.price, unit: '£') %></td>
-        <td><%= oi.quantity %></td>
       </tr>
     <% end %>
     </tbody>

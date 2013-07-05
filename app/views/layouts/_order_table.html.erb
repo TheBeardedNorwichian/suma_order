@@ -1,0 +1,24 @@
+<table class="table table-striped table-hover table-condensed table-bordered items-table">
+  <thead>
+    <tr>
+    <% if defined? group %>
+      <th>ID</th>
+    <% end %>
+      <th>Open Date</th>
+      <th>Deadline</th>
+      <th>Delivery Date</th>
+    </tr>
+  </thead>
+  <tbody>
+<% orders.each do |x| %>
+    <tr>
+    <% if defined? group %>
+      <td><%= link_to "#{x.id}", group_order_path(group_id: group.id, id: x.id) %></td>
+    <% end %> 
+      <td><%= x.open %></td>
+      <td><%= x.deadline %></td>
+      <td><%= x.delivery %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

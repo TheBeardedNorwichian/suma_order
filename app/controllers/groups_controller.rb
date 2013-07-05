@@ -7,11 +7,9 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_id(params[:id])
-    @current_order = @group.current_order
-    orders = @group.orders
-    current_order_array = []
-    current_order_array << @current_order
-    @older_orders = orders - current_order_array
+    @current_order = []
+    @current_order << @group.current_order
+    @other_orders = @group.orders - @current_order
   end
   
   def new

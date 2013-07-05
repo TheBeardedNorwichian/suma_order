@@ -14,6 +14,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  unit_price  :decimal(8, 2)
+#  vat         :boolean          default(FALSE)
 #
 
 require 'spec_helper'

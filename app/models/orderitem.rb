@@ -6,7 +6,6 @@
 #  order_id   :integer
 #  user_id    :integer
 #  item_id    :integer
-#  quantity   :integer
 #  created_at :datetime
 #  updated_at :datetime
 #
@@ -15,4 +14,5 @@ class Orderitem < ActiveRecord::Base
   belongs_to :user
   belongs_to :order 
   belongs_to :item
+
 end

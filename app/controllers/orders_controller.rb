@@ -1,11 +1,7 @@
 class OrdersController < ApplicationController
-
-  def index
-    @order = Group.find(params[:id]).orders
-  end
   
   def show
-    @order = Order.find(params[:id])
+    @order = Order.where(id: params[:id])
   end
 
 end

@@ -63,7 +63,8 @@ require 'csv'
               price: x.price,
               category_id: id_find("category", x.category_name), 
               brand_id: id_find("brand", x.brand), 
-              unit_price: x.size.match(/^\d+\sx?\s/) ? (x.price / x.size.to_i) : x.price
+              unit_price: x.size.match(/^\d+\sx?\s/) ? (x.price / x.size.to_i) : x.price,
+              vat: x.vat
               )
   end
 
@@ -98,8 +99,3 @@ require 'csv'
 
   STDOUT.puts "Creating an Order. . ."
   Order.create!(open: Date.yesterday, deadline: Date.today, delivery: Date.tomorrow, order_sent: false, group_id: 1)
-
-  STDOUT.puts "Creating an order_items. . ."
-  Orderitem.create!(order_id: 1, user_id: 1, item_id: 2453, quantity: 2)
-  Orderitem.create!(order_id: 1, user_id: 1, item_id: 25, quantity: 1)
-  Orderitem.create!(order_id: 1, user_id: 1, item_id: 3465, quantity: 3)

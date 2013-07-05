@@ -1,0 +1,34 @@
+ <table class="table table-striped table-hover table-condensed table-bordered items-table">
+    <thead>
+      <tr>
+        <th><%= link_to "Code", sort: "code" %></th>
+        <th><%= link_to "Description", sort: "description" %></th>
+        <th>Brand</th>
+        <th>Category</th>
+        <th><%= link_to "Size", sort: "size" %></th>
+        <th><%= link_to "Price", sort: "price" %></th>
+        <th>RRP</th>
+        <th>Unit Price</th>
+        <% if signed_in? %>
+        <th>Add?</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+  <% items.each do |x| %>
+      <tr>
+        <td class="table-code"><%= x.code %></td>
+        <td><%= x.description %></td>
+        <td><%= x.brand != nil ?  link_to("#{x.brand.name}", brand_items_path(x.brand_id)): "N/A" %></td>
+        <td><%= link_to "#{x.category.name}", category_items_path(x.category_id) %></td>
+        <td><%= x.size %></td>
+        <td class="table-code"><%= number_to_currency(x.price, unit: "£") %></td>
+        <td><%= number_to_currency(x.rrp, unit: "£") %></td>
+        <td><i><%= number_to_currency(x.unit_price, unit: "£") %></i></td>
+        <% if signed_in? %>
+        <td><%= render 'add_button', x: x %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
