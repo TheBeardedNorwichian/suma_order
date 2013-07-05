@@ -88,14 +88,15 @@ require 'csv'
               admin: false
               )
 
-  STDOUT.puts "Creating default group. . ."
-  Group.create!(
-              name: "Bond Street Suma Group",
-              admin: User.first
-              )
-
   STDOUT.puts "Assigning user to group 1. . ."
   User.first.update_attribute(:group_id, 1)
 
   STDOUT.puts "Creating an Order. . ."
   Order.create!(open: Date.yesterday, deadline: Date.today, delivery: Date.tomorrow, order_sent: false, group_id: 1)
+
+  STDOUT.puts "Creating default group. . ."
+  Group.create!(
+              name: "Bond Street Suma Group",
+              admin: User.first,  
+              current_order: Order.first
+              )
