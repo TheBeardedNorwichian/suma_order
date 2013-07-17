@@ -30,7 +30,7 @@ require 'csv'
       details:        row[4],
       size:           row[5].downcase,
       price:          row[6].to_d,
-      vat:            row[7] == "1" ? true : false,
+      vat:            row[7],
       rrp:            row[8] != nil ? row[8].to_d : 0,
       b:              row[9] != nil ? true : false,
       f:              row[10] != nil ? true : false,
@@ -64,7 +64,14 @@ require 'csv'
               category_id: id_find("category", x.category_name), 
               brand_id: id_find("brand", x.brand), 
               unit_price: x.size.match(/^\d+\sx?\s/) ? (x.price / x.size.to_i) : x.price,
-              vat: x.vat
+              vat: case x.vat 
+                when 1
+                  0.2
+                when 5
+                  0.05
+                else
+                  1.0
+              end
               )
   end
 

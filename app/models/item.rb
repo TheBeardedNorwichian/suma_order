@@ -38,9 +38,7 @@ class Item < ActiveRecord::Base
   end
 
   def price_plus_vat
-    if self.vat
-      self.price = self.price * 1.20
-    end
+    self.price * self.vat
   end
 
 end

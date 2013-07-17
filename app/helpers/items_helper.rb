@@ -1,18 +1,11 @@
 module ItemsHelper
 
-  def item_vat(item)
-    if item.vat
-      vat = item.price * 0.2
+  def item_plus_vat(item)
+    if item.vat == 1
+      return item.price
     else
-      vat = 0.0
+      return item.price * (1 + item.vat)     
     end
   end
 
-  def item_vat_total(item)
-    if item.vat
-      vat_total = item.price + item_vat(item)
-    else
-      vat_total = item.price
-    end
-  end
 end
