@@ -95,8 +95,9 @@ require 'csv'
               admin: false
               )
 
-  STDOUT.puts "Assigning user to group 1. . ."
+  STDOUT.puts "Assigning users to group 1. . ."
   User.first.update_attribute(:group_id, 1)
+  User.last.update_attribute(:group_id, 1)
 
   STDOUT.puts "Creating an Order. . ."
   Order.create!(open: Date.yesterday, deadline: Date.today, delivery: Date.tomorrow, order_sent: false, group_id: 1)

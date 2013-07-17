@@ -9,7 +9,6 @@
         <th>Brand</th>
         <th>Size</th>
         <th>Price</th>
-        <th><em>VAT</em></th>
         <th><strong>Total</strong></th>
         <th>Remove</th>
       </tr>
@@ -23,8 +22,7 @@
         <td><%= oi.item.brand.name %></td>
         <td><%= oi.item.size %></td>
         <td><%= number_to_currency(oi.item.price, unit: '£') %></td>
-        <td><em><%= number_to_currency(item_vat(oi.item), unit: '£') %></em></td>
-        <td><strong><%= number_to_currency(item_vat_total(oi.item), unit: '£') %></strong></td>
+        <td><strong><%= number_to_currency(item_plus_vat(oi.item), unit: '£') %></strong></td>
         <td><%= render 'delete_button', orderitem: oi %></td>
       </tr>
     <% end %>
