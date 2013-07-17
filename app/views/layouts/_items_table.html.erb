@@ -7,6 +7,8 @@
         <th>Category</th>
         <th><%= link_to "Size", sort: "size" %></th>
         <th><%= link_to "Price", sort: "price" %></th>
+        <th>VAT</th>
+        <th>Total</th>
         <th>RRP</th>
         <th>Unit Price</th>
         <% if signed_in? %>
@@ -22,7 +24,9 @@
         <td><%= x.brand != nil ?  link_to("#{x.brand.name}", brand_items_path(x.brand_id)): "N/A" %></td>
         <td><%= link_to "#{x.category.name}", category_items_path(x.category_id) %></td>
         <td><%= x.size %></td>
-        <td class="table-code"><%= number_to_currency(x.price, unit: "£") %></td>
+        <td><%= number_to_currency(x.price, unit: "£") %></td>
+        <td><%= number_to_currency(item_vat(x), unit: '£') %></td>
+        <td class="table-code"><%= number_to_currency(item_vat_total(x), unit: '£') %></td>
         <td><%= number_to_currency(x.rrp, unit: "£") %></td>
         <td><i><%= number_to_currency(x.unit_price, unit: "£") %></i></td>
         <% if signed_in? %>

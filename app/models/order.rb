@@ -15,6 +15,19 @@
 class Order < ActiveRecord::Base
   belongs_to :group
   has_many :orderitems
-  has_many :users, through: :orderitems
+
+  def order_users
+    self.group.users
+  end
+
+  def user_total(user)
+    user_total = 0.0
+    self.orderitems.each do |oi|
+      if oi.user_id == user.id
+        user_total += oi.item.price
+      end
+    end
+    return user_total
+  end
 
 end

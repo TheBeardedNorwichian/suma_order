@@ -18,7 +18,11 @@ module SessionsHelper
   end
 
   def current_order
-    @current_user.group.current_order
+    current_user.group.current_order
+  end
+
+  def current_group
+    current_user.group
   end
 
   def current_user?(user)

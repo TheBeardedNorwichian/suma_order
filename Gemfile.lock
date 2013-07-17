@@ -44,6 +44,8 @@ GEM
     atomic (1.1.9)
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
+    bootstrap-datepicker-rails (1.1.1.1)
+      railties (>= 3.0)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.9)
@@ -222,6 +224,7 @@ DEPENDENCIES
   annotate
   awesome_print
   bcrypt-ruby
+  bootstrap-datepicker-rails
   bootstrap-sass
   bootstrap-will_paginate
   capybara

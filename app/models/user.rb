@@ -17,8 +17,8 @@
 
 class User < ActiveRecord::Base
   belongs_to :group
+  has_many :orders
   has_many :orderitems
-  has_many :orders, through: :orderitems
 
   before_save :downcase_email
   before_save :create_remember_token

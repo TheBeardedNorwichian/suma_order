@@ -1,3 +1,4 @@
+<% orders = [*orders] %>
 <table class="table table-striped table-hover table-condensed table-bordered items-table">
   <thead>
     <tr>
@@ -7,6 +8,7 @@
       <th>Open Date</th>
       <th>Deadline</th>
       <th>Delivery Date</th>
+      <th>Total</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +20,7 @@
       <td><%= x.open %></td>
       <td><%= x.deadline %></td>
       <td><%= x.delivery %></td>
+      <td><%= number_to_currency(total_price(x.orderitems), unit: '£') %></td>
     </tr>
   <% end %>
   </tbody>

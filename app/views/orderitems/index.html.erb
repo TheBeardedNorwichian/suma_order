@@ -1,3 +1,4 @@
+<h1>Your Current Order</h1>
 <%= render 'layouts/order_table', orders: @order %>
  <table class="table table-striped table-hover table-condensed table-bordered items-table">
     <thead>
@@ -6,7 +7,10 @@
         <th>Description</th>
         <th>Category</th>
         <th>Brand</th>
+        <th>Size</th>
         <th>Price</th>
+        <th><em>VAT</em></th>
+        <th><strong>Total</strong></th>
         <th>Remove</th>
       </tr>
     </thead>
@@ -17,10 +21,13 @@
         <td><%= oi.item.description %></td>
         <td><%= oi.item.category.name %></td>
         <td><%= oi.item.brand.name %></td>
+        <td><%= oi.item.size %></td>
         <td><%= number_to_currency(oi.item.price, unit: '£') %></td>
+        <td><em><%= number_to_currency(item_vat(oi.item), unit: '£') %></em></td>
+        <td><strong><%= number_to_currency(item_vat_total(oi.item), unit: '£') %></strong></td>
         <td><%= render 'delete_button', orderitem: oi %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
-  <h3>Total Price: <%= number_to_currency(total_price(@orderitems), unit: '£') %></h3>
+  <h3 class="text-right text-info">Total Price: <%= number_to_currency(total_price(@orderitems), unit: '£') %></h3>

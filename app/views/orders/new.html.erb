@@ -1,0 +1,22 @@
+<% provide(:title, 'New Order') %>
+<h1>Create a new order</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@order, url: group_orders_path) do |f| %>
+
+      <%= f.hidden_field :group_id, value: @order.group_id %>
+
+      <%= f.label :open %>
+      <%= f.text_field :open, class: 'datepicker' %>
+
+      <%= f.label :deadline %>
+      <%= f.text_field :deadline, class: 'datepicker' %>
+
+      <%= f.label :delivery %>
+      <%= f.text_field :delivery, class: 'datepicker' %>
+
+      <%= f.submit "Create order", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
