@@ -7,7 +7,10 @@
       </h1>
     </section>  
     <section>
-    <%= link_to "New Order", new_group_order_path(@group), class: "btn btn-warning" %>
+      <div class="btn-group">
+        <%= link_to "New Order", new_group_order_path(@group), class: "btn btn-warning" %>
+        <%= link_to "New User", new_group_user_path(@group), class: "btn btn-success" %>
+      </div>
     </section>
     <section>
       <ul>

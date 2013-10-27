@@ -9,7 +9,7 @@ SumaOrder::Application.routes.draw do
     end
   end
 
-  resources :users do
+  resources :users, only: [:index, :edit, :update, :destroy, :show] do
     resources :orders do
       resources :orderitems
     end

@@ -100,6 +100,7 @@ require 'csv'
   User.last.update_attribute(:group_id, 1)
 
   STDOUT.puts "Creating an Order. . ."
+  Order.create!(open: 2.weeks.ago, deadline: 1.week.ago, delivery: 3.days.ago, order_sent: true, group_id: 1)
   Order.create!(open: Date.yesterday, deadline: Date.today, delivery: Date.tomorrow, order_sent: false, group_id: 1)
 
   STDOUT.puts "Creating default group. . ."

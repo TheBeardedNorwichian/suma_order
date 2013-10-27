@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @group = Group.find(params[:group_id])
   end
 
   def create

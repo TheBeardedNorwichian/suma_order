@@ -30,4 +30,9 @@ class Order < ActiveRecord::Base
     return user_total
   end
 
+  def check_order_deadline
+    if self.deadline > Date.today
+      @can_order = fasle
+    end
+  end
 end

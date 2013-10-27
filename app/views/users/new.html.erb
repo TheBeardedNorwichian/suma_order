@@ -1,18 +1,17 @@
 <% provide(:title, 'New User') %>
-<h1>Add New User</h1>
+<h2><%= "#{@group.name} - New Member" %></h2>
 
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
+
+      <%= f.hidden_field :group_id, value: @group.id %>
 
       <%= f.label :name %>
       <%= f.text_field :name %>
 
       <%= f.label :email %>
       <%= f.text_field :email %>
-
-      <%= f.label :group_id %>
-      <%= f.collection_select :group_id, Group.all, :id, :name %>
 
       <%= f.label :password %>
       <%= f.password_field :password %>
