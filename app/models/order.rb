@@ -35,4 +35,8 @@ class Order < ActiveRecord::Base
       @can_order = fasle
     end
   end
+
+  def set_current_order
+  end
+  
 end

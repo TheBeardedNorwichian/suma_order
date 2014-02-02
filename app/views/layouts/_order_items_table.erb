@@ -6,6 +6,7 @@
       <th>Category</th>
       <th>Brand</th>
       <th>Size</th>
+      <th>Quantity</th>
       <th>Price</th>
       <th>Who</th>
     </tr>
@@ -18,6 +19,7 @@
       <td><%= oi.item.category.name %></td>
       <td><%= oi.item.brand.name %></td>
       <td><%= oi.item.size %></td>
+      <td><%= oi.quantity %></td>
       <td><%= number_to_currency(oi.item.price, unit: '£') %></td>
       <td><%= oi.user.name %>
     </tr>

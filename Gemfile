@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
@@ -36,10 +34,6 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'rb-inotify'
   gem 'libnotify'
-end
-
-group :production do
-  gem 'pg'
 end
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

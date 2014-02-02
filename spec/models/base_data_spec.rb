@@ -10,7 +10,7 @@
 #  details       :string(255)
 #  size          :string(255)
 #  price         :decimal(8, 2)
-#  vat           :boolean
+#  vat           :decimal(, )
 #  rrp           :decimal(8, 2)
 #  b             :boolean
 #  f             :boolean

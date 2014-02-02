@@ -239,7 +239,7 @@ DEPENDENCIES
   jquery-ui-rails
   libnotify
   pg
-  rails (= 4.0.0)
+  rails
   rb-inotify
   rspec-rails
   sass-rails

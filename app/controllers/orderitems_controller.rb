@@ -6,9 +6,16 @@ class OrderitemsController < ApplicationController
     store_location
   end
 
+  # def create
+  #   @orderitem = Orderitem.create!(orderitem_params)
+  #   flash[:success] = "#{@orderitem.item.description} added to your order!"
+  #   redirect_to session[:return_to]
+  # end
+
   def create
-    @orderitem = Orderitem.create!(orderitem_params)
-    flash[:success] = "#{@orderitem.item.description} added to your order!"
+    @item_to_add = Orderitem.new(orderitem_params)
+    Orderitem.new_oi(@item_to_add)
+    flash[:success] = "#{@item_to_add.item.description} added to your order!"
     redirect_to session[:return_to]
   end
 
@@ -22,7 +29,7 @@ class OrderitemsController < ApplicationController
   private
 
     def orderitem_params
-      params.permit(:user_id, :order_id, :item_id)
+      params.permit(:user_id, :order_id, :item_id, :quantity)
     end
 
 end
