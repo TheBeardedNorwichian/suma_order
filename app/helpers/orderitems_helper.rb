@@ -1,16 +1,11 @@
 module OrderitemsHelper
 
   def total_price(orderitems)
-    price = 0.0
+    total_price = 0.0
     orderitems.each do |oi|
-      if oi.item.vat
-        xvat = oi.item.price * 1.20
-        price += xvat
-      else
-        price += oi.item.price
-      end
+        total_price += ( item_plus_vat(oi.item) * oi.quantity )
     end
-    return price
+    return total_price
   end
 
 end
