@@ -37,4 +37,13 @@ class Orderitem < ActiveRecord::Base
     oi_to_update.save
   end
 
+  def self.remove_oi(oi)
+    if oi.quantity > 1
+      oi.quantity -= 1
+      oi.save
+    else
+      Orderitem.where(id: oi.id).first.destroy
+    end
+  end
+
 end

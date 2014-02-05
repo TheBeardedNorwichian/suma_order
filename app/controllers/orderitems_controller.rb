@@ -20,7 +20,8 @@ class OrderitemsController < ApplicationController
   end
 
   def destroy
-    Orderitem.find(params[:id]).destroy
+    @item_to_remove = Orderitem.find(params[:id])
+    Orderitem.remove_oi(@item_to_remove)
     flash[:success] = "They dun gone."
     redirect_to session[:return_to]
   end

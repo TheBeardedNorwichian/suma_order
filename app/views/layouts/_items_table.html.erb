@@ -16,9 +16,9 @@
     </thead>
     <tbody>
   <% items.each do |x| %>
-      <tr>
+      <tr title="<%= x.details %>">
         <td class="table-code"><%= x.code %></td>
-        <td><%= x.description %></td>
+        <td ><%= x.description %></td>
         <td><%= x.brand != nil ?  link_to("#{x.brand.name}", brand_items_path(x.brand_id)): "N/A" %></td>
         <td><%= link_to "#{x.category.name}", category_items_path(x.category_id) %></td>
         <td><%= x.size %></td>
