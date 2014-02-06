@@ -34,7 +34,7 @@ class Orderitem < ActiveRecord::Base
     else
       oi_to_update = Orderitem.new(item_id: oi.item_id, order_id: oi.order_id, user_id: oi.user_id)
     end
-    oi_to_update.save
+    return oi_to_update
   end
 
   def self.remove_oi(oi)

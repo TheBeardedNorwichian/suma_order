@@ -14,9 +14,11 @@ class OrderitemsController < ApplicationController
 
   def create
     @item_to_add = Orderitem.new(orderitem_params)
-    Orderitem.new_oi(@item_to_add)
-    flash[:success] = "#{@item_to_add.item.description} added to your order!"
-    redirect_to session[:return_to]
+    @updated_oi = Orderitem.new_oi(@item_to_add)
+    if @updated_oi.save
+      flash[:success] = "#{@updated_oi.item.description} added to your order!  You now have #{@updated_oi.quantity}."
+      redirect_to session[:return_to]
+    end
   end
 
   def destroy
