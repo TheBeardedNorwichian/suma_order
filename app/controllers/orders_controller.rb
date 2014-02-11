@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @members = @order.group.users
+    store_location
   end
 
   def new

@@ -10,12 +10,12 @@
         <th>Size</th>
         <th>Price</th>
         <th>Quantity</th>
-        <th><strong>Total</strong></th>
+        <th><strong>Total (inc VAT)</strong></th>
         <th>Remove</th>
       </tr>
     </thead>
     <tbody>
-  <% @orderitems.each do |oi| %>
+  <% @user_orderitems.each do |oi| %>
       <tr>
         <td><strong><%= oi.item.code %></strong></td>
         <td><%= oi.item.description %></td>
@@ -25,9 +25,9 @@
         <td><%= number_to_currency(oi.item.price, unit: '£') %></td>
         <td><%= oi.quantity %></td>
         <td><strong><%= number_to_currency(item_plus_vat(oi.item) * oi.quantity, unit: '£') %></strong></td>
-        <td><%= render 'delete_button', orderitem: oi %></td>
+        <td><%= render 'orderitems/delete_button', orderitem: oi %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
-  <h3 class="text-right text-info">Total Price: <%= number_to_currency(total_price(@orderitems), unit: '£') %></h3>
+  <h3 class="text-right text-info">Total Price: <%= number_to_currency(total_price(@user_orderitems), unit: '£') %></h3>

@@ -6,7 +6,19 @@
   <ul class="dropdown-menu">
     <% if signed_in? %>
     <li class="nav-header">My Stuff</li>
-    <li><%=link_to "Current Order", user_order_orderitems_path(current_user.id, current_order.id) %></li>
+    <li class="dropdown-submenu">
+      <a tabindex="-1" href="#">Your Order</a>
+      <ul class="dropdown-menu">
+        <% if current_user_orderitems.empty? %>
+          <div class="alert alert-warning"><li><%= "Your order is empty" %></li></div>
+        <% elsif %>
+          <%current_user_orderitems.each do |oi| %>
+          <li><%=link_to "#{oi.quantity}x#{oi.item.description}", user_order_orderitems_path(current_user.id, current_order.id) %></li>
+          <% end %>
+        <% end %>
+        <li><a tabindex="-1" href="#"><strong><%= "£#{total_price(current_user_orderitems)}" %></strong></a></li>
+      </ul>
+    </li>
     <li><%=link_to "Profile", '#' %></li>
     <li><%=link_to "Order History", '#' %></li>
     <% end %>

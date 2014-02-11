@@ -12,15 +12,15 @@
     </tr>
   </thead>
   <tbody>
-<% orders.each do |x| %>
+<% orders.each do |order| %>
     <tr>
     <% if defined? group %>
-      <td><%= link_to "#{x.id}", group_order_path(group_id: group.id, id: x.id) %></td>
+      <td><%= link_to "#{order.id}", group_order_path(group_id: group.id, id: order.id) %></td>
     <% end %> 
-      <td><%= x.open %></td>
-      <td><%= x.deadline %></td>
-      <td><%= x.delivery %></td>
-      <td><%= number_to_currency(total_price(x.orderitems), unit: '£') %></td>
+      <td><%= order.open %></td>
+      <td><%= order.deadline %></td>
+      <td><%= order.delivery %></td>
+      <td><%= number_to_currency(total_price(order.orderitems), unit: '£') %></td>
     </tr>
   <% end %>
   </tbody>

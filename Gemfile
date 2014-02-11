@@ -15,6 +15,7 @@ gem 'pg'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'bootstrap-datepicker-rails'
+gem 'haml'
 
 group :development, :test do
   gem 'rspec-rails'

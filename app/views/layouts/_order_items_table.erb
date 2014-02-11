@@ -9,6 +9,9 @@
       <th>Quantity</th>
       <th>Price</th>
       <th>Who</th>
+      <% if signed_in? %>
+      <th>Remove</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -20,8 +23,11 @@
       <td><%= oi.item.brand.name %></td>
       <td><%= oi.item.size %></td>
       <td><%= oi.quantity %></td>
-      <td><%= number_to_currency(oi.item.price, unit: '£') %></td>
-      <td><%= oi.user.name %>
+      <td><%= number_to_currency(oi.item.price * oi.quantity, unit: '£') %></td>
+      <td><%= oi.user.name %></td>
+      <% if signed_in? %>
+      <td><%= render 'orderitems/delete_button', orderitem: oi %></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>

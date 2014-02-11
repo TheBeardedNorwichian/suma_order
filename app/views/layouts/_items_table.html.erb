@@ -4,7 +4,7 @@
         <th><%= link_to "Code", sort: "code" %></th>
         <th><%= link_to "Description", sort: "description" %></th>
         <th><%= link_to "Brand", sort: "brand_id" %></th>
-        <th>Category</th>
+        <th><%= link_to "Category", sort: "category_id" %></th>
         <th><%= link_to "Size", sort: "size" %></th>
         <th>Total (inc VAT)</th>
         <th>RRP</th>
@@ -15,18 +15,18 @@
       </tr>
     </thead>
     <tbody>
-  <% items.each do |x| %>
-      <tr title="<%= x.details %>">
-        <td class="table-code"><%= x.code %></td>
-        <td ><%= x.description %></td>
-        <td><%= x.brand != nil ?  link_to("#{x.brand.name}", brand_items_path(x.brand_id)): "N/A" %></td>
-        <td><%= link_to "#{x.category.name}", category_items_path(x.category_id) %></td>
-        <td><%= x.size %></td>
-        <td class="table-code"><%= number_to_currency(item_plus_vat(x), unit: '£') %></td>
-        <td><%= number_to_currency(x.rrp, unit: "£") %></td>
-        <td><i><%= number_to_currency(x.unit_price, unit: "£") %></i></td>
+  <% items.each do | item | %>
+      <tr title="<%= item.details %>">
+        <td class="table-code"><%= item.code %></td>
+        <td ><%= item.description %></td>
+        <td><%= item.brand != nil ?  link_to("#{item.brand.name}", brand_items_path(item.brand_id)): "N/A" %></td>
+        <td><%= link_to "#{item.category.name}", category_items_path(item.category_id) %></td>
+        <td><%= item.size %></td>
+        <td class="table-code"><%= number_to_currency(item_plus_vat(item), unit: '£') %></td>
+        <td><%= number_to_currency(item.rrp, unit: "£") %></td>
+        <td><i><%= number_to_currency(item.unit_price, unit: "£") %></i></td>
         <% if signed_in? %>
-        <td><%= render 'add_button', x: x %></td>
+        <td><%= render 'add_button', item: item %></td>
         <% end %>
       </tr>
     <% end %>

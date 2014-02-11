@@ -27,7 +27,7 @@ class Orderitem < ActiveRecord::Base
     where(order_id: order).where(user_id: user)
   end
 
-  def self.new_oi(oi)
+  def self.add_oi(oi)
     oi_to_update = Orderitem.where(item_id: oi.item_id).where(order_id: oi.order_id).where(user_id: oi.user_id).first
     if oi_to_update
       oi_to_update.quantity += 1
