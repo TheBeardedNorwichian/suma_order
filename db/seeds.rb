@@ -1,4 +1,5 @@
 require 'csv'
+require 'open-uri'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -21,7 +22,8 @@ require 'csv'
 
 # category_name[0], brand[1], code[2], description[3], details[4], size[5], price[6], vat[7], rrp[8], b[9], f[10], g[11], o[12], s[13], v[14] 
   STDOUT.puts "Creating base data from CurrentSumaPrices.csv. . . "
-  CSV.foreach('db/CurrentSumaPrices.csv', headers: true) do |row|
+  suma_csv = open('http://www.suma.coop/downloads/CurrentSumaPrices.csv')
+  CSV.foreach(suma_csv, headers: true, quote_char: "\x00") do |row|
     row = BaseData.create({
       category_name:  row[0].titleize,
       brand:          row[1] != nil ? row[1].titleize : "No brand",
