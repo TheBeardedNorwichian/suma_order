@@ -20,7 +20,8 @@
 class Item < ActiveRecord::Base
   belongs_to :category
   belongs_to :brand
-  has_many :items
+  has_many :favorites
+
 
   validates :code, presence: true, uniqueness: { case_sensitive: false }
   validates :description, presence: true

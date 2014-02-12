@@ -13,6 +13,7 @@ SumaOrder::Application.routes.draw do
     resources :orders do
       resources :orderitems
     end
+    resources :favorites
   end
 
   resources :sessions, only: [:new, :create, :destroy]
