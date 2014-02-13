@@ -10,7 +10,8 @@
         <th>RRP</th>
         <th>Unit Price</th>
         <% if signed_in? %>
-        <th>Add?</th>
+        <th>Buy</th>
+        <th>Fav</th>
         <% end %>
       </tr>
     </thead>
@@ -27,6 +28,7 @@
         <td><i><%= number_to_currency(item.unit_price, unit: "£") %></i></td>
         <% if signed_in? %>
         <td><%= render 'add_button', item: item %></td>
+        <td><%= render 'fav_button', item: item %></td>
         <% end %>
       </tr>
     <% end %>

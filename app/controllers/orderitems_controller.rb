@@ -18,7 +18,7 @@ class OrderitemsController < ApplicationController
   def destroy
     @item_to_remove = Orderitem.find(params[:id])
     Orderitem.remove_oi(@item_to_remove)
-    flash[:success] = "#{@item_to_remove.item.description} removed"
+    flash[:warning] = "#{@item_to_remove.item.description} removed"
     redirect_to session[:return_to]
   end
 
