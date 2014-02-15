@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
 
   def index
+    store_location
   end
 
   def create
@@ -14,10 +15,16 @@ class FavoritesController < ApplicationController
     end
   end
 
+  def destroy
+    @remove_fav = Favorite.find(params[:id]).destroy
+    flash[:success] = "#{@remove_fav.item.description} has been removed from your favorites"
+    redirect_to session[:return_to]  
+  end
+
     private
 
     def favorite_params
-      params.permit(:user_id, :item_id)
+      params.permit(:user_id, :item_id, :id)
     end
 
 end

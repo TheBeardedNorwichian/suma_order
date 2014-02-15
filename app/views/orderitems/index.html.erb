@@ -11,7 +11,7 @@
         <th>Price</th>
         <th>Quantity</th>
         <th><strong>Total (inc VAT)</strong></th>
-        <th>Remove</th>
+        <th>Options</th>
       </tr>
     </thead>
     <tbody>
@@ -25,7 +25,8 @@
         <td><%= number_to_currency(oi.item.price, unit: '£') %></td>
         <td><%= oi.quantity %></td>
         <td><strong><%= number_to_currency(item_plus_vat(oi.item) * oi.quantity, unit: '£') %></strong></td>
-        <td><div class="btn-group"><%= render 'items/add_button', item: oi.item %><%= render 'orderitems/delete_button', orderitem: oi %></div></td>
+        <td><div class="btn-group"><%= render 'items/add_button', item: oi.item %>
+          <%= render 'orderitems/delete_button', orderitem: oi %></div></td>
       </tr>
     <% end %>
     </tbody>
