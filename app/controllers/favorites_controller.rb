@@ -17,7 +17,7 @@ class FavoritesController < ApplicationController
 
   def destroy
     @remove_fav = Favorite.find(params[:id]).destroy
-    flash[:success] = "#{@remove_fav.item.description} has been removed from your favorites"
+    flash[:error] = "#{@remove_fav.item.description} has been removed from your favorites"
     redirect_to session[:return_to]  
   end
 
