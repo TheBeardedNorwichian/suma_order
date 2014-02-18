@@ -6,5 +6,5 @@ window.analytics.page();
 // accommodate Turbolinks and track page views
 $(document).on('ready page:change', function() {
   analytics.page();
-})
+});
 </script>
