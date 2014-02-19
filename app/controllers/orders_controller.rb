@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @orderitems = Orderitem.where(order_id: params[:id]).order(:user_id)
     @members = @order.users.distinct
     store_location
   end
