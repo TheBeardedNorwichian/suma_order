@@ -12,7 +12,6 @@
 #  updated_at      :datetime
 #  remember_token  :string(255)
 #  admin           :boolean          default(FALSE)
-#  group_id        :integer
 #
 
 require 'spec_helper'

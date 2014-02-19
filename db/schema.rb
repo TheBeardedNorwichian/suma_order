@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212203257) do
+ActiveRecord::Schema.define(version: 20140218233909) do
 
   create_table "base_data", force: true do |t|
     t.string   "category_name"
@@ -53,14 +53,6 @@ ActiveRecord::Schema.define(version: 20140212203257) do
     t.datetime "updated_at"
   end
 
-  create_table "groups", force: true do |t|
-    t.string   "name"
-    t.integer  "admin"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "current_order"
-  end
-
   create_table "items", force: true do |t|
     t.string   "code"
     t.string   "description"
@@ -94,7 +86,7 @@ ActiveRecord::Schema.define(version: 20140212203257) do
     t.boolean  "order_sent"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "group_id"
+    t.boolean  "active_order"
   end
 
   create_table "users", force: true do |t|
@@ -107,7 +99,6 @@ ActiveRecord::Schema.define(version: 20140212203257) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.boolean  "admin",           default: false
-    t.integer  "group_id"
   end
 
 end

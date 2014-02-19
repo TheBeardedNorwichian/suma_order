@@ -2,23 +2,18 @@
 #
 # Table name: orders
 #
-#  id         :integer          not null, primary key
-#  open       :date
-#  deadline   :date
-#  delivery   :date
-#  order_sent :boolean
-#  created_at :datetime
-#  updated_at :datetime
-#  group_id   :integer
+#  id           :integer          not null, primary key
+#  open         :date
+#  deadline     :date
+#  delivery     :date
+#  order_sent   :boolean
+#  created_at   :datetime
+#  updated_at   :datetime
+#  active_order :boolean
 #
 
 class Order < ActiveRecord::Base
-  belongs_to :group
   has_many :orderitems
-
-  def order_users
-    self.group.users
-  end
 
   def user_total(user)
     user_total = 0.0
@@ -36,7 +31,6 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def set_current_order
-  end
-  
+
+
 end

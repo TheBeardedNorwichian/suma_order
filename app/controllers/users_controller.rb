@@ -7,12 +7,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @orders = @user.group.orders
+    @orders = @user.orderitems.orders
   end
 
   def new
     @user = User.new
-    @group = Group.find(params[:group_id])
   end
 
   def create
@@ -51,7 +50,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :group_id)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
     end
 
     # Before filters

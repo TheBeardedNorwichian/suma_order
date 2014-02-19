@@ -12,11 +12,9 @@
 #  updated_at      :datetime
 #  remember_token  :string(255)
 #  admin           :boolean          default(FALSE)
-#  group_id        :integer
 #
 
 class User < ActiveRecord::Base
-  belongs_to :group
   has_many :orders
   has_many :orderitems
   has_many :favorites
@@ -32,7 +30,6 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
-  # validates :group_id, presence: true
 
   private
 

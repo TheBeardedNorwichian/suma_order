@@ -2,18 +2,12 @@ SumaOrder::Application.routes.draw do
 
   resources :items, only: [:index]
 
-  resources :groups do
-    resources :users
-    resources :orders do
-      resources :orderitems, only: [:index]
-    end
-  end
-
-  resources :users, only: [:index, :edit, :update, :destroy, :show] do
-    resources :orders do
-      resources :orderitems
-    end
+  resources :users do
     resources :favorites, only: [:index, :new, :create, :destroy]
+    resources :orderitems, only: [:index, :new, :create, :destroy]
+  end
+  resources :orders do
+    resources :orderitems, only: [:index, :destroy]
   end
 
   resources :sessions, only: [:new, :create, :destroy]

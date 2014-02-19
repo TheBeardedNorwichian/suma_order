@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
 
   def index
+    @favorites = Favorite.where(params[:user_id])
     store_location
   end
 

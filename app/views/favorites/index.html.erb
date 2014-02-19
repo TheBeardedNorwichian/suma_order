@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-    <% user_favorites.each do | fav | %>
+    <% @favorites.each do | fav | %>
       <tr>
         <td class="table-code"><%= fav.item.code %></td>
         <td><%= fav.item.description %></td>
