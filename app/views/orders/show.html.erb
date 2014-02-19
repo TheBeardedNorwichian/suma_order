@@ -9,10 +9,10 @@
     </tr>
   </thead>
   <tbody>
-  <% @order.group.users.each do |member| %>
+  <% @members.each do |user| %>
     <tr>
-      <td><%= member.name %></td>
-      <td><%= number_to_currency(total_price(member.orderitems), unit: '£') %></td>
+      <td><%= user.name %></td>
+      <td><%= number_to_currency(total_price(user.orderitems), unit: '£') %></td>
       <td>yes</td>
     </tr>
   <% end %>

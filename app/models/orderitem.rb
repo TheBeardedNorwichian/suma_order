@@ -23,20 +23,23 @@ class Orderitem < ActiveRecord::Base
   validates :item_id, presence: true
   validates :item_id, uniqueness: { scope: [:order_id, :user_id] }
 
+# scope for collecting a specific users orderitems for a specific order
   def self.user_orderitems(order, user)
     where(order_id: order).where(user_id: user)
   end
 
+# either create a new OI line or add 1 to an existing line
   def self.add_oi(oi)
-    oi_to_update = Orderitem.where(item_id: oi.item_id).where(order_id: oi.order_id).where(user_id: oi.user_id).first
-    if oi_to_update
-      oi_to_update.quantity += 1
+    item_to_add = Orderitem.where(item_id: oi.item_id).where(order_id: oi.order_id).where(user_id: oi.user_id).first
+    if item_to_add
+      item_to_add.quantity += 1
     else
-      oi_to_update = Orderitem.new(item_id: oi.item_id, order_id: oi.order_id, user_id: oi.user_id)
+      item_to_add = Orderitem.new(item_id: oi.item_id, order_id: oi.order_id, user_id: oi.user_id)
     end
-    return oi_to_update
+    return item_to_add
   end
 
+# if OI object passed has a quantity greater than one, reduce it or delete it
   def self.remove_oi(oi)
     if oi.quantity > 1
       oi.quantity -= 1

@@ -20,12 +20,13 @@
         <li><a tabindex="-1" href="#"><strong>Total: <%= number_to_currency(total_price(current_user_orderitems), unit: "£") %></strong></a></li>
       </ul>
     </li>
-    <li><%=link_to "Favorites", user_favorites_path(user_id: params[:id]) %></li>
+    <li><%=link_to "Favorites", user_favorites_path(user_id: current_user.id) %></li>
     <% if admin? %>
     <li class="divider"></li>
     <li class="nav-header">Admin</li>
     <li><%=link_to "Users", users_path %></li>
     <li><%=link_to "Orders", orders_path %></li>
+    <li><%=link_to "New Order", new_order_path %></li>
     <% end %>
     <li class="divider"></li>
     <li><%= link_to "Sign out", signout_path, method: "delete" %></li>

@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  skip_before_action :require_login
 
   def index
     if params[:category_id].blank? && params[:brand_id].blank?

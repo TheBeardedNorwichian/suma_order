@@ -14,6 +14,7 @@
 
 class Order < ActiveRecord::Base
   has_many :orderitems
+  has_many :users, through: :orderitems
 
   def user_total(user)
     user_total = 0.0

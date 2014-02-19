@@ -1,8 +1,9 @@
 class OrderitemsController < ApplicationController
 
+# will only ever show the orderitmes for the active order
   def index 
-    @user_orderitems = Orderitem.user_orderitems(params[:order_id], params[:user_id])
-    @order = Order.where(id: params[:order_id])
+    @order = active_order
+    @user_orderitems = Orderitem.user_orderitems(@order, params[:user_id])
     store_location
   end
 

@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]
 
   def new
   end
@@ -7,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      redirect_to items_path
+      redirect_to root_path
       flash[:success] = "Welcome back, #{user.name}"
     else
       flash.now[:error] = "Invalid email/password combination is wrong"

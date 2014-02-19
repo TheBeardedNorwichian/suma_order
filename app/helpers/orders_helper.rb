@@ -1,7 +1,7 @@
 module OrdersHelper
 
-  def current_order
-    current_user.current_order
+  def active_order
+    Order.where(active_order: true).first
   end
 
 end

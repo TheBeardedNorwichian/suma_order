@@ -1,8 +1,12 @@
 class OrdersController < ApplicationController
   
+  def index
+    @orders = Order.all
+  end
+
   def show
     @order = Order.find(params[:id])
-    @members = @order.orderitems.users
+    @members = @order.users.distinct
     store_location
   end
 
@@ -13,7 +17,7 @@ class OrdersController < ApplicationController
   end
   
   def create
-    @order = Order.build(order_params)
+    @order = Order.create!(order_params)
     if @order.save
       flash[:success] = "New order created!"
       redirect_to orders_path

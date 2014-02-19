@@ -7,7 +7,7 @@ module OrderitemsHelper
   end
 
   def current_user_orderitems
-    current_user_orderitems = Orderitem.user_orderitems(current_order, current_user)
+    current_user_orderitems = Orderitem.user_orderitems(active_order, current_user)
   end
 
 end
