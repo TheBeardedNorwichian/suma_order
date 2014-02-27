@@ -16,9 +16,9 @@
     </thead>
     <tbody>
   <% items.each do | item | %>
-      <tr title="<%= item.details %>">
+      <tr>
         <td class="table-code"><%= item.code %></td>
-        <td ><%= item.description %></td>
+        <td title="<%= item.details %>"><%= item.description %></td>
         <td><%= item.brand != nil ?  link_to("#{item.brand.name}", brand_items_path(item.brand_id)): "N/A" %></td>
         <td><%= link_to "#{item.category.name}", category_items_path(item.category_id) %></td>
         <td><%= item.size %></td>
@@ -26,7 +26,7 @@
         <td><%= number_to_currency(item.rrp, unit: "£") %></td>
         <td><i><%= number_to_currency(item.unit_price, unit: "£") %></i></td>
         <% if signed_in? %>
-        <td><div class="btn-group"><%= render 'add_button', item: item %><%= render 'fav_button', item: item %></div></td>
+        <td><%= render 'add_button', item: item %><%= render 'fav_button', item: item %></td>
         <% end %>
       </tr>
     <% end %>

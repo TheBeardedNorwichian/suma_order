@@ -2,24 +2,33 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = Favorite.where(user_id: params[:user_id])
+    @fav = Favorite.where(id: params[:id])
     store_location
   end
 
   def create
+    @fav = Favorite.where(id: params[:id])
     @new_fav = Favorite.new(favorite_params)
-    if @new_fav.save
-      flash[:success] = "#{@new_fav.item.description} has been added to your favorites"
-      redirect_to session[:return_to]
-    else
-      flash[:error] = "You have already added #{@new_fav.item.description} to your favorites"
-      redirect_to session[:return_to]    
+    @new_fav.save
+    respond_to do |format|
+      format.html do
+        flash[:success] = "#{@new_fav.item.description} has been added to your favorites"
+        redirect_to session[:return_to]
+      end
+      format.js
     end
   end
 
   def destroy
+    @fav = Favorite.where(id: params[:id])
     @remove_fav = Favorite.find(params[:id]).destroy
-    flash[:error] = "#{@remove_fav.item.description} has been removed from your favorites"
-    redirect_to session[:return_to]  
+    respond_to do |format|
+      format.html do
+        flash[:error] = "#{@remove_fav.item.description} has been removed from your favorites"
+        redirect_to session[:return_to]  
+      end
+      format.js
+    end
   end
 
     private
