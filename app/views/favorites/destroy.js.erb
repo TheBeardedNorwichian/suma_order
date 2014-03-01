@@ -1,2 +1,3 @@
-$('#<%= @remove_fav.item.id %>').html("<%= escape_javascript(render 'favorites/add', item: @remove_fav.item) %>");
+$('#fav_but_<%= @remove_fav.item.id %>').html("<%= escape_javascript(render 'favorites/add', item: @remove_fav.item) %>");
 <%= add_gritter("#{@remove_fav.item.description} removed from your favorites", title: "Favorite Removed", time: 2000) %>
+$('#fav_row_<%= @remove_fav.id %>').remove();

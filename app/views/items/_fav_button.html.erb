@@ -1,4 +1,4 @@
-<span id="<%= item.id %>">
+<span id="fav_but_<%= item.id %>">
 <% if is_favorite?(item) %>
     <%= render 'favorites/delete', item: item %>
   <% else %>

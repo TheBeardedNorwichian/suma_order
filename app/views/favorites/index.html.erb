@@ -4,17 +4,15 @@
         <th>Code</th>
         <th>Description</th>
         <th>Added</th>
-        <th>Notes</th>
         <th>Options</th>
       </tr>
     </thead>
     <tbody>
     <% @favorites.each do | fav | %>
-      <tr>
+      <tr id='fav_row_<%= fav.id %>'>
         <td class="table-code"><%= fav.item.code %></td>
         <td><%= fav.item.description %></td>
         <td><%= fav.updated_at.strftime('%A, %b %d') %></td>
-        <td>blah</td>
         <td><div class="btn-group"><%= render 'items/add_button', item: fav.item %><%= render 'items/fav_button', item: fav.item %></div></td>
       </tr>
     <% end %>
