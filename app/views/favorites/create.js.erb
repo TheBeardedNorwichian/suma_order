@@ -1,1 +1,2 @@
 $('#<%= @new_fav.item.id %>').html("<%= escape_javascript(render 'favorites/delete', item: @new_fav.item) %>");
+<%= add_gritter("#{@new_fav.item.description} added to your favorites", title: "Favorite Added", time: 2000) %>

@@ -9,10 +9,12 @@
     font-style: normal;
 }
 
-@import "bootstrap";
-@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
+$baseFontSize:          13px !default;
+$baseLineHeight:        17px !default;
 
-/* mixins, variables, etc. */
+@import "bootstrap";
+@import "gritter";
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 
 // * {
 //   -webkit-border-radius: 0 !important;
@@ -299,3 +301,31 @@ input {
     -moz-border-radius:6px 0 6px 6px;
     border-radius:6px 0 6px 6px;
   } 
+
+  /* custom gritter stuff */
+#gritter-notice-wrapper {
+  position:fixed;
+  top:60px;
+  right:20px;
+  width:301px;
+  z-index:9999;
+  }
+
+.gritter-item {
+  display:block;
+  color:#eee;
+  font-family:$sansFontFamily;
+  padding:2px 11px 8px 11px;
+  filter:inherit; // ie8 fix
+  }
+
+.gritter-close {
+  display:none;
+  position:absolute;
+  top:5px;
+  right:3px;
+  cursor:pointer;
+  width:30px;
+  height:30px;
+  filter:inherit; // ie8 fix
+}

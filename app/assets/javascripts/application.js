@@ -16,4 +16,5 @@
 //= require bootstrap-datepicker
 //= require bootstrap-tooltip
 //= require turbolinks
+//= require gritter
 //= require_tree .
