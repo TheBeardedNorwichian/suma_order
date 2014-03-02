@@ -2,7 +2,7 @@ module OrderitemsHelper
 
   def total_price(orderitems)
     total_price = 0.0
-    orderitems.each { |oi| total_price += ( item_plus_vat(oi.item) * oi.quantity ) }
+    orderitems.each { |oi| total_price += (oi.item.price_inc_vat * oi.quantity ) }
     return total_price
   end
 

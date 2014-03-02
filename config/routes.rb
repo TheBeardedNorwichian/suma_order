@@ -20,6 +20,8 @@ SumaOrder::Application.routes.draw do
     resources :items, only: [:index]
   end
 
+  post '/add_to_order/:item_id' => 'orderitems#add_to_order', as: 'add_to_order'
+
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'

@@ -1,0 +1,3 @@
+$("#um_oi_q_<%= @updated_oi.id %>").text("<%= @updated_oi.quantity %>");
+$("#oi_i_q_<%= @updated_oi.id %>").text("<%= @updated_oi.quantity %>");
+<%= add_gritter("#{@updated_oi.item.description} added to your order.<br>  You have #{@updated_oi.quantity} on order.", title: "Item Added to Order") %>;

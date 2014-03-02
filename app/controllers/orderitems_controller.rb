@@ -7,27 +7,37 @@ class OrderitemsController < ApplicationController
     store_location
   end
 
-  def create
-    @item_to_add = Orderitem.new(orderitem_params)
+  def add_to_order
+    @item_to_add = Orderitem.new(user_id: current_user.id, order_id: active_order.id, item_id: params[:item_id])
     @updated_oi = Orderitem.add_oi(@item_to_add)
     if @updated_oi.save
-      flash[:success] = "One #{@updated_oi.item.description} added to your order."
-      redirect_to session[:return_to]
+      respond_to do |format|
+        format.html do
+          flash[:success] = "One #{@updated_oi.item.description} added to your order."
+          redirect_to session[:return_to]
+        end
+        format.js
+      end
     end
   end
 
   def destroy
     @item_to_remove = Orderitem.find(params[:id])
-    Orderitem.remove_oi(@item_to_remove)
-    flash[:warning] = "#{@item_to_remove.item.description} removed"
-    redirect_to session[:return_to]
+    @removed_item = Orderitem.remove_oi(@item_to_remove)
+    respond_to do |format|
+      format.html do 
+        flash[:warning] = "#{@removed_item.item.description} removed"
+        redirect_to session[:return_to]
+      end
+      format.js
+    end
   end
 
 
   private
 
     def orderitem_params
-      params.permit(:user_id, :order_id, :item_id, :quantity)
+      params.permit(:item_id)
     end
 
 end

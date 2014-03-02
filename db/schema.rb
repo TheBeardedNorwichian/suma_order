@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140218233909) do
+ActiveRecord::Schema.define(version: 20140301233557) do
 
   create_table "base_data", force: true do |t|
     t.string   "category_name"
@@ -57,15 +57,16 @@ ActiveRecord::Schema.define(version: 20140218233909) do
     t.string   "code"
     t.string   "description"
     t.string   "details"
-    t.decimal  "price",       precision: 8, scale: 2
-    t.decimal  "rrp",         precision: 8, scale: 2
+    t.decimal  "price",         precision: 8, scale: 2
+    t.decimal  "rrp",           precision: 8, scale: 2
     t.string   "size"
     t.integer  "category_id"
     t.integer  "brand_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "unit_price",  precision: 8, scale: 2
-    t.decimal  "vat",                                 default: 0.0
+    t.decimal  "unit_price",    precision: 8, scale: 2
+    t.decimal  "vat",                                   default: 0.0
+    t.decimal  "price_inc_vat", precision: 8, scale: 2
   end
 
   add_index "items", ["code"], name: "index_items_on_code", unique: true

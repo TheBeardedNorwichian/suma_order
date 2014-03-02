@@ -9,8 +9,6 @@
     font-style: normal;
 }
 
-$baseFontSize:          13px !default;
-$baseLineHeight:        17px !default;
 
 @import "bootstrap";
 @import "gritter";
@@ -303,13 +301,6 @@ input {
   } 
 
   /* custom gritter stuff */
-#gritter-notice-wrapper {
-  position:fixed;
-  top:60px;
-  right:20px;
-  width:301px;
-  z-index:9999;
-  }
 
 .gritter-item {
   display:block;
@@ -318,14 +309,3 @@ input {
   padding:2px 11px 8px 11px;
   filter:inherit; // ie8 fix
   }
-
-.gritter-close {
-  display:none;
-  position:absolute;
-  top:5px;
-  right:3px;
-  cursor:pointer;
-  width:30px;
-  height:30px;
-  filter:inherit; // ie8 fix
-}

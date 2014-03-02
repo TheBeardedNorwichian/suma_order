@@ -1,0 +1,8 @@
+<% if @removed_item.quantity > 0 %>
+  $("#um_oi_q_<%= @removed_item.id %>").text("<%= @removed_item.quantity %>");
+  $("#oi_i_q_<%= @removed_item.id %>").text("<%= @removed_item.quantity %>");
+  <%= add_gritter("#{@removed_item.item.description} removed from your order.  You have #{@removed_item.quantity} on order.", title: "Item Removed to Order", time: 2000) %>;
+<% else %>
+  $("#oi_row_<%= @removed_item.id %>").remove();
+  <%= add_gritter("You have removed #{@removed_item.item.description} from your order.", title: "Item Removed to Order") %>;
+<% end %>

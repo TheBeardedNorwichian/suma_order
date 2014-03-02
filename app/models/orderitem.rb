@@ -39,13 +39,15 @@ class Orderitem < ActiveRecord::Base
     return item_to_add
   end
 
-# if OI object passed has a quantity greater than one, reduce it or delete it
+# if OI object passed has a quantity greater than one, reduce it otherwise delete it
   def self.remove_oi(oi)
     if oi.quantity > 1
       oi.quantity -= 1
       oi.save
+      return oi
     else
-      Orderitem.where(id: oi.id).first.destroy
+      removed_oi = Orderitem.where(id: oi.id).first.destroy
+      return removed_oi
     end
   end
 

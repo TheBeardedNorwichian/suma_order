@@ -1,1 +1,1 @@
-<%= link_to '<span class="glyphicon glyphicon-minus"></span>'.html_safe, user_orderitem_path(id: orderitem.id, user_id: orderitem.user_id, order_id: orderitem.order_id), method: :delete, class: "btn btn-mini btn-danger", title: "Remove one from order" %>
+<%= link_to '<span class="glyphicon glyphicon-minus"></span>'.html_safe, user_orderitem_path(id: orderitem.id, user_id: orderitem.user_id, order_id: orderitem.order_id), method: :delete, remote: true, class: "btn btn-mini btn-danger", title: "Remove one from order" %>

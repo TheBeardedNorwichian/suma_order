@@ -72,9 +72,15 @@ require 'open-uri'
                 when 5
                   0.05
                 else
-                  1.0
+                  0
               end
               )
+  end
+
+  STDOUT.puts "Calculating VAT prices . . ."
+  Item.all.each do |i|
+    i.price_inc_vat = i.price + ( i.price * i.vat )
+    i.save
   end
 
   STDOUT.puts "Creating users . . ."

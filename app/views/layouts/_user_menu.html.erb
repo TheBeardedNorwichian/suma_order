@@ -7,18 +7,7 @@
     <li class="nav-header">My Stuff</li>
     <li class="dropdown-submenu">
       <%=link_to "My Order", user_orderitems_path(user_id: current_user) %>
-      <ul class="dropdown-menu">
-        <% if current_user_orderitems.empty? %>
-          <div class="alert alert-warning"><li><%= "Your order is empty" %></li></div>
-        <% elsif %>
-          <%current_user_orderitems.each do |oi| %>
-          <li><%= oi.item.description %>
-            <span class="badge pull-right"><%= oi.quantity %></span>
-          </li>
-          <% end %>
-        <% end %>
-        <li><a tabindex="-1" href="#"><strong>Total: <%= number_to_currency(total_price(current_user_orderitems), unit: "£") %></strong></a></li>
-      </ul>
+      <%= render 'layouts/menu_order' %>
     </li>
     <li><%=link_to "Favorites", user_favorites_path(user_id: current_user.id) %></li>
     <% if admin? %>
