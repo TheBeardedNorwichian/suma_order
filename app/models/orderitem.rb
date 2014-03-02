@@ -47,6 +47,9 @@ class Orderitem < ActiveRecord::Base
       return oi
     else
       removed_oi = Orderitem.where(id: oi.id).first.destroy
+      if removed_oi.destroyed?
+        puts "#{removed_oi.item.description} destroyed."
+      end
       return removed_oi
     end
   end

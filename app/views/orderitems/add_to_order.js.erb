@@ -1,3 +1,17 @@
-$("#um_oi_q_<%= @updated_oi.id %>").text("<%= @updated_oi.quantity %>");
+var um_oi = '#um_oi_<%= @updated_oi.id %>';
+var li_line = "<li id='um_oi_<%= @updated_oi.id %>'><strong id='q_<%= @updated_oi.id %>'><%= @updated_oi.quantity %></strong> x <%= @updated_oi.item.description %></li>";
+var total = "Total: <%= number_to_currency(total_price(current_user_orderitems), unit: '£') %>";
+
+$("#0_on_order").remove();
+
+if( $(um_oi).length > 0) {
+  $("#q_<%= @updated_oi.id %>").text("<%= @updated_oi.quantity %>");
+}
+else
+{
+  $('#user_order_items').append(li_line);
+};
 $("#oi_i_q_<%= @updated_oi.id %>").text("<%= @updated_oi.quantity %>");
-<%= add_gritter("#{@updated_oi.item.description} added to your order.<br>  You have #{@updated_oi.quantity} on order.", title: "Item Added to Order") %>;
+$("#um_total").text(total);
+$("#oi_total").text(total);
+<%= add_gritter("#{@updated_oi.item.description} added to your order.<br> - You have #{@updated_oi.quantity} on order.", title: "Item Added to Order") %>;

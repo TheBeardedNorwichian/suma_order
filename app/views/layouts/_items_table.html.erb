@@ -6,9 +6,9 @@
         <th><%= link_to "Brand", sort: "brand_id" %></th>
         <th><%= link_to "Category", sort: "category_id" %></th>
         <th><%= link_to "Size", sort: "size" %></th>
-        <th>Total (inc VAT)</th>
         <th>RRP</th>
         <th>Unit Price</th>
+        <th>Price (inc VAT)</th>
         <% if signed_in? %>
         <th>Options</th>
         <% end %>
@@ -22,9 +22,9 @@
         <td><%= item.brand != nil ?  link_to("#{item.brand.name}", brand_items_path(item.brand_id)): "N/A" %></td>
         <td><%= link_to "#{item.category.name}", category_items_path(item.category_id) %></td>
         <td><%= item.size %></td>
-        <td class="table-code"><%= number_to_currency(item.price_inc_vat, unit: '£') %></td>
         <td><%= number_to_currency(item.rrp, unit: "£") %></td>
         <td><i><%= number_to_currency(item.unit_price, unit: "£") %></i></td>
+        <td class="table-code"><%= number_to_currency(item.price_inc_vat, unit: '£') %></td>
         <% if signed_in? %>
         <td><%= render 'add_button', item: item %><%= render 'fav_button', item: item %></td>
         <% end %>

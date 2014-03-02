@@ -1,13 +1,9 @@
-<ul id="user_header_order" class="dropdown-menu"> 
-  <% if current_user_orderitems.empty? %>
-    <div class="alert alert-warning"><li><%= "Your order is empty" %></li></div>
-  <% else %>
-    <%current_user_orderitems.each do |oi| %>
-    <li id="um_oi_<%= oi.id %>"><%= oi.item.description %>
-      <span id="um_oi_q_<%= oi.id %>" class="badge pull-right"><%= oi.quantity %></span>
-    </li>
-    <% end %>
-  <% end %>
-  <li><a tabindex="-1" href="#"><strong>Total: 
-  <%= number_to_currency(total_price(current_user_orderitems), unit: "£") %></strong></a></li>
+<ul id="user_header_order" class="dropdown-menu list-unstyled"> 
+  <ul id="user_order_items" class="list-unstyled unstyled">
+      <%current_user_orderitems.each do |oi| %>
+      <li id="um_oi_<%= oi.id %>"><strong id="q_<%=oi.id%>"><%= oi.quantity %></strong> x <%= oi.item.description %></li>
+      <% end %>
+  </ul>
+  <li><strong id="um_total">Total: 
+  <%= number_to_currency(total_price(current_user_orderitems), unit: "£") %></strong></li>
 </ul>
