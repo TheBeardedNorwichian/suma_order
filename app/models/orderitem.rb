@@ -22,6 +22,8 @@ class Orderitem < ActiveRecord::Base
   validates :order_id, presence: true
   validates :item_id, presence: true
   validates :item_id, uniqueness: { scope: [:order_id, :user_id] }
+  validate :check_order_deadline
+  validate :check_order_active
 
 # scope for collecting a specific users orderitems for a specific order
   def self.user_orderitems(order, user)
@@ -39,7 +41,7 @@ class Orderitem < ActiveRecord::Base
     return item_to_add
   end
 
-# if OI object passed has a quantity greater than one, reduce it otherwise delete it
+  # if OI object passed has a quantity greater than one, reduce it otherwise delete it
   def self.remove_oi(oi)
     if oi.quantity > 1
       oi.quantity -= 1
@@ -53,5 +55,19 @@ class Orderitem < ActiveRecord::Base
       return removed_oi
     end
   end
+
+    private
+
+      def check_order_deadline
+        if self.order.is_closed?
+          errors.add(:order_deadline, "The order has closed")
+        end
+      end
+
+      def check_order_active
+        unless self.order.active_order
+          errors.add(:order_not_active, "This order is not active")
+        end
+      end
 
 end

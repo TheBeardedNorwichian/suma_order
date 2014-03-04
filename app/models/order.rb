@@ -3,7 +3,7 @@
 # Table name: orders
 #
 #  id           :integer          not null, primary key
-#  open         :date
+#  orderopen    :date
 #  deadline     :date
 #  delivery     :date
 #  order_sent   :boolean
@@ -20,15 +20,17 @@ class Order < ActiveRecord::Base
     user_total = 0.0
     self.orderitems.each do |oi|
       if oi.user_id == user.id
-        user_total += oi.item.price
+        user_total += oi.item.price_inc_vat
       end
     end
     return user_total
   end
 
-  def check_order_deadline
-    if self.deadline > Date.today
-      @can_order = fasle
+  def is_closed?
+    if self.deadline < Date.today
+      return true
+    else
+      return false
     end
   end
 

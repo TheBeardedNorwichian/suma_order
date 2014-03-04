@@ -24,10 +24,10 @@
         <td><%= oi.item.size %></td>
         <td><%= number_to_currency(oi.item.price_inc_vat, unit: '£') %></td>
         <td id="oi_i_q_<%= oi.id %>"><%= oi.quantity %></td>
-        <td><strong><%= number_to_currency((oi.item.price_inc_vat * oi.quantity), unit: '£') %></strong></td>
+        <td><strong id="oi_i_t_<%= oi.id %>"><%= number_to_currency((oi.item.price_inc_vat * oi.quantity), unit: '£') %></strong></td>
         <td><div class="btn-group"><%= render 'items/add_button', item: oi.item %><%= render 'orderitems/delete_button', orderitem: oi %><%= render 'items/fav_button', item: oi.item %></div></td>
       </tr>
     <% end %>
     </tbody>
   </table>
-  <h3 id="oi_total" class="text-right text-info">Total: <%= number_to_currency(total_price(@user_orderitems), unit: '£') %></h3>
+  <h3 class="text-right text-info total_price">Total: <%= number_to_currency(total_price(@user_orderitems), unit: '£') %></h3>

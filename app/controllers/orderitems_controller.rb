@@ -10,22 +10,30 @@ class OrderitemsController < ApplicationController
   def add_to_order
     @item_to_add = Orderitem.new(user_id: current_user.id, order_id: active_order.id, item_id: params[:item_id])
     @updated_oi = Orderitem.add_oi(@item_to_add)
-    @updated_oi.save
-    respond_to do |format|
-      format.html do
-        flash[:success] = "One #{@updated_oi.item.description} added to your order."
-        redirect_to session[:return_to]
+    if @updated_oi.save!
+      respond_to do |format|
+        format.html do
+          flash[:success] = "One #{@updated_oi.item.description} added to your order."
+          redirect_to session[:return_to]
+        end
+        format.js
       end
-      format.js
+    else 
+      respond_to do |format|
+        format.html do 
+          flash[:error]
+        end
+        format.js
+      end
     end
   end
 
   def destroy
     @item_to_remove = Orderitem.find(params[:id])
-    @removed_item = Orderitem.remove_oi(@item_to_remove)
+    @removed_oi = Orderitem.remove_oi(@item_to_remove)
     respond_to do |format|
       format.html do 
-        flash[:warning] = "#{@removed_item.item.description} removed"
+        flash[:warning] = "#{@removed_oi.item.description} removed"
         redirect_to session[:return_to]
       end
       format.js

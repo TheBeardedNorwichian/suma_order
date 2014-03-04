@@ -3,7 +3,7 @@
 # Table name: orders
 #
 #  id           :integer          not null, primary key
-#  open         :date
+#  orderopen    :date
 #  deadline     :date
 #  delivery     :date
 #  order_sent   :boolean

@@ -5,7 +5,7 @@
         <th>ID</th>
         <th>Open Date</th>
         <th>Close Date</th>
-        <th>Propose Delivery Date</th>
+        <th>Proposed Delivery Date</th>
         <th>Order Status</th>
         <th>Co-ordinator</th>
       </tr>
@@ -14,7 +14,7 @@
   <% orders.each do |order| %>
       <tr>
         <td><%= link_to "#{order.id}", order_path(order.id) %></td>
-        <td><%= order.open %></td>
+        <td><%= order.orderopen %></td>
         <td><%= order.deadline %></td>
         <td><%= order.delivery %></td>
         <td><%= order.active_order == true ? "Active" : "Inactive" %></td>

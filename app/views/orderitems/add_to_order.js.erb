@@ -12,6 +12,6 @@ else
   $('#user_order_items').append(li_line);
 };
 $("#oi_i_q_<%= @updated_oi.id %>").text("<%= @updated_oi.quantity %>");
-$("#um_total").text(total);
-$("#oi_total").text(total);
+$("#oi_i_t_<%= @updated_oi.id %>").text("<%= number_to_currency((@updated_oi.item.price_inc_vat * @updated_oi.quantity), unit: '£') %>");
+$(".total_price").text(total);
 <%= add_gritter("#{@updated_oi.item.description} added to your order.<br> - You have #{@updated_oi.quantity} on order.", title: "Item Added to Order") %>;

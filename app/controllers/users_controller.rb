@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @orders = @user.orderitems.orders
+    @orders = @user.distinct_orders
   end
 
   def new

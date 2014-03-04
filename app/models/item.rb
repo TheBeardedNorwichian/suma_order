@@ -2,19 +2,20 @@
 #
 # Table name: items
 #
-#  id          :integer          not null, primary key
-#  code        :string(255)
-#  description :string(255)
-#  details     :string(255)
-#  price       :decimal(8, 2)
-#  rrp         :decimal(8, 2)
-#  size        :string(255)
-#  category_id :integer
-#  brand_id    :integer
-#  created_at  :datetime
-#  updated_at  :datetime
-#  unit_price  :decimal(8, 2)
-#  vat         :decimal(, )      default(0.0)
+#  id            :integer          not null, primary key
+#  code          :string(255)
+#  description   :string(255)
+#  details       :string(255)
+#  price         :decimal(8, 2)
+#  rrp           :decimal(8, 2)
+#  size          :string(255)
+#  category_id   :integer
+#  brand_id      :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#  unit_price    :decimal(8, 2)
+#  vat           :decimal(, )      default(0.0)
+#  price_inc_vat :decimal(8, 2)
 #
 
 class Item < ActiveRecord::Base

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140301233557) do
+ActiveRecord::Schema.define(version: 20140303223649) do
 
   create_table "base_data", force: true do |t|
     t.string   "category_name"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20140301233557) do
   end
 
   create_table "orders", force: true do |t|
-    t.date     "open"
+    t.date     "orderopen"
     t.date     "deadline"
     t.date     "delivery"
     t.boolean  "order_sent"

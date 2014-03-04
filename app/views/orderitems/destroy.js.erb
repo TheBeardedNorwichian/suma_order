@@ -1,11 +1,12 @@
-<% if @removed_item.destroyed? %>
-  $("#um_oi_<%= @removed_item.id %>").remove();
-  $("#oi_row_<%= @removed_item.id %>").remove();
-  <%= add_gritter("You have removed #{@removed_item.item.description} from your order.", title: "Item Removed to Order") %>;
+<% if @removed_oi.destroyed? %>
+  $("#um_oi_<%= @removed_oi.id %>").remove();
+  $("#oi_row_<%= @removed_oi.id %>").remove();
+  <%= add_gritter("You have removed #{@removed_oi.item.description} from your order.", title: "Item Removed to Order") %>;
 <% else %>
-  $("#q_<%= @removed_item.id %>").text("<%= @removed_item.quantity %>");
-  $("#oi_i_q_<%= @removed_item.id %>").text("<%= @removed_item.quantity %>");
-  <%= add_gritter("#{@removed_item.item.description} removed from your order.  You have #{@removed_item.quantity} on order.", title: "Item Removed to Order", time: 2000) %>;
+  $("#q_<%= @removed_oi.id %>").text("<%= @removed_oi.quantity %>");
+  $("#oi_i_q_<%= @removed_oi.id %>").text("<%= @removed_oi.quantity %>");
+  <%= add_gritter("#{@removed_oi.item.description} removed from your order.  You have #{@removed_oi.quantity} on order.", title: "Item Removed to Order", time: 2000) %>;
 <% end %>
-$("#um_total").text("Total: <%= number_to_currency(total_price(current_user_orderitems), unit: '£') %>");
-$("#oi_total").text("Total: <%= number_to_currency(total_price(current_user_orderitems), unit: '£') %>");
+
+$(".total_price").text("Total: <%= number_to_currency(total_price(current_user_orderitems), unit: '£') %>");
+$("#oi_i_t_<%= @removed_oi.id %>").text("<%= number_to_currency((@removed_oi.item.price_inc_vat * @removed_oi.quantity), unit: '£') %>");
