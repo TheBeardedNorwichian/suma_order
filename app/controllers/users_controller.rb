@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   end
 
   def clear_order
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     User.clear_order(@user)
     redirect_to user_orderitems_path(user_id: @user)
     unless @user.orderitems.present?
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
     # Before filters
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:id] || params[:user_id])
       redirect_to(root_path) unless current_user?(@user)
     end
 

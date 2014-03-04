@@ -21,7 +21,7 @@ SumaOrder::Application.routes.draw do
   end
 
   post '/add_to_order/:item_id' => 'orderitems#add_to_order', as: 'add_to_order'
-  post '/clear_order/:id' => 'users#clear_order', as: 'clear_order'
+  post '/clear_order/:user_id' => 'users#clear_order', as: 'clear_order'
 
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
