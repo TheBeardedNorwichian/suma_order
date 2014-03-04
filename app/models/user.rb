@@ -35,6 +35,13 @@ class User < ActiveRecord::Base
     self.orders.group("order_id")
   end
 
+  def self.clear_order(user_id)
+    oi_to_clear = Orderitem.where(order_id: Order.where(active_order: true).first, user_id: user_id)
+    oi_to_clear.each do |oi|
+      oi.destroy
+    end
+  end 
+
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end

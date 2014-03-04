@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :admin_user,      only: [:index, :edit, :update, :new, :create, :destroy]
+  before_action :correct_user,    only: [:clear_order]
 
   def index
     @users = User.all
@@ -7,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @orders = @user.distinct_orders
+    @orders = Order.all
   end
 
   def new
@@ -45,6 +46,15 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "They dun gone."
     redirect_to users_url
+  end
+
+  def clear_order
+    @user = User.find(params[:id])
+    User.clear_order(@user)
+    redirect_to user_orderitems_path(user_id: @user)
+    unless @user.orderitems.present?
+      flash[:success] = "All items removed from your order."
+    end
   end
 
   private

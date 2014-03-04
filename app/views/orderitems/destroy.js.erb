@@ -5,7 +5,7 @@
 <% else %>
   $("#q_<%= @removed_oi.id %>").text("<%= @removed_oi.quantity %>");
   $("#oi_i_q_<%= @removed_oi.id %>").text("<%= @removed_oi.quantity %>");
-  <%= add_gritter("#{@removed_oi.item.description} removed from your order.  You have #{@removed_oi.quantity} on order.", title: "Item Removed to Order", time: 2000) %>;
+  <%= add_gritter("#{@removed_oi.item.description} removed from your order.<vr> - You have #{@removed_oi.quantity} on order.", title: "Item Removed to Order", time: 2000) %>;
 <% end %>
 
 $(".total_price").text("Total: <%= number_to_currency(total_price(current_user_orderitems), unit: '£') %>");

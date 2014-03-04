@@ -34,6 +34,13 @@ class Order < ActiveRecord::Base
     end
   end
 
-
+  def self.set_active(order)
+    Order.all.each do |inactive|
+      inactive.active_order = false
+      inactive.save
+    end
+    order.active_order = true
+    order.save
+  end
 
 end

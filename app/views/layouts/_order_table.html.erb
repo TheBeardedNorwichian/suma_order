@@ -14,9 +14,9 @@
   <% orders.each do |order| %>
       <tr>
         <td><%= link_to "#{order.id}", order_path(order.id) %></td>
-        <td><%= order.orderopen %></td>
-        <td><%= order.deadline %></td>
-        <td><%= order.delivery %></td>
+        <td><%= order_date_format(order.orderopen) %></td>
+        <td><%= order_date_format(order.deadline)  %></td>
+        <td><%= order_date_format(order.delivery)  %></td>
         <td><%= order.active_order == true ? "Active" : "Inactive" %></td>
         <td></td>
       </tr>

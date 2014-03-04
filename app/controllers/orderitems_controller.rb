@@ -10,16 +10,14 @@ class OrderitemsController < ApplicationController
   def add_to_order
     @item_to_add = Orderitem.new(user_id: current_user.id, order_id: active_order.id, item_id: params[:item_id])
     @updated_oi = Orderitem.add_oi(@item_to_add)
-    if @updated_oi.save!
-      respond_to do |format|
+    respond_to do |format|    
+      if @updated_oi.save!
         format.html do
           flash[:success] = "One #{@updated_oi.item.description} added to your order."
           redirect_to session[:return_to]
         end
         format.js
-      end
-    else 
-      respond_to do |format|
+      else 
         format.html do 
           flash[:error]
         end
@@ -39,7 +37,6 @@ class OrderitemsController < ApplicationController
       format.js
     end
   end
-
 
   private
 

@@ -1,0 +1,6 @@
+<h4>Favorites</h2>
+<ul class="unstyled">
+<% user.favorites.each do |fav| %>
+  <li><%= fav.item.description %></li>
+<% end %>
+</ul>

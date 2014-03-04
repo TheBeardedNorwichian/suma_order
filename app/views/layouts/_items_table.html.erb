@@ -16,7 +16,7 @@
     </thead>
     <tbody>
   <% items.each do | item | %>
-      <tr>
+      <tr id="item_row_<%= item.id %>" <% if is_on_order?(item) %> class = "success" <% elsif is_favorite?(item) %> class = "warning" <% end %> >
         <td class="table-code"><%= item.code %></td>
         <td title="<%= item.details %>"><%= item.description %></td>
         <td><%= item.brand != nil ?  link_to("#{item.brand.name}", brand_items_path(item.brand_id)): "N/A" %></td>
