@@ -2,6 +2,7 @@ class OrderitemsController < ApplicationController
 
 # will only ever show the orderitmes for the active order
   def index 
+    @user = User.find(params[:user_id])
     @order = active_order
     @user_orderitems = Orderitem.user_orderitems(@order, params[:user_id])
     store_location
