@@ -1,4 +1,5 @@
 class OrderitemsController < ApplicationController
+before_action :correct_user,    only: [:index]
 
 # will only ever show the orderitmes for the active order
   def index 
@@ -40,6 +41,11 @@ class OrderitemsController < ApplicationController
   end
 
   private
+
+    def correct_user
+      @user = User.find(params[:id] || params[:user_id])
+      redirect_to(root_path) unless current_user?(@user)
+    end
 
     def orderitem_params
       params.permit(:item_id)
