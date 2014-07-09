@@ -104,5 +104,5 @@ require 'open-uri'
               )
 
   STDOUT.puts "Creating an Order. . ."
-  Order.create!(open: Date.yesterday, deadline: Date.today, delivery: Date.tomorrow, order_sent: false, active_order: true)
-  Order.create!(open: 2.weeks.ago, deadline: 1.week.ago, delivery: 3.days.ago, order_sent: true)
+  Order.create!(orderopen: Date.yesterday, deadline: Date.today, delivery: Date.tomorrow, order_sent: false, active_order: true)
+  Order.create!(orderopen: 2.weeks.ago, deadline: 1.week.ago, delivery: 3.days.ago, order_sent: true)
