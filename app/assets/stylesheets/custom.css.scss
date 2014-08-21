@@ -9,6 +9,8 @@
     font-style: normal;
 }
 
+$gray-medium-light: #eaeaea;
+
 $border-radius-base: 0;
 
 @import "bootstrap";
@@ -27,8 +29,6 @@ $border-radius-base: 0;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
-$grayMediumLight: #eaeaea;
 
 /* hero unit */
 
@@ -103,7 +103,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $grayLight;
+  color: $gray-light;
 }
 
 p {
@@ -138,12 +138,12 @@ footer {
   bottom: 0%;
   width: 100%;
   margin-top: 45px;
-  border-top: 1px solid $grayMediumLight;
-  color: $grayLight;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
   a {
     color: $gray;
     &:hover { 
-      color: $grayDarker;
+      color: $gray-darker;
     }
   }  
   small { 
@@ -175,7 +175,7 @@ footer {
 aside {
   section {
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid $gray-lighter;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -305,7 +305,7 @@ input {
 .gritter-item {
   display:block;
   color:#eee;
-  font-family:$sansFontFamily;
+  font-family:$font-family-sans-serif;
   padding:2px 11px 8px 11px;
   filter:inherit; // ie8 fix
   }

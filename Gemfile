@@ -16,6 +16,7 @@ gem 'annotate'
 gem 'will_paginate'
 gem 'haml'
 gem 'gritter'
+gem 'pry-rails'
 
 group :development, :test do
   gem 'rspec-rails'

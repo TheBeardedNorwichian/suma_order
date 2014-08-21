@@ -1,0 +1,7 @@
+<% if order.active_order? %>
+  <span class="glyphicon glyphicon-remove"></span>
+<% else %>
+<%= link_to '<span class="glyphicon glyphicon-ok" />'.html_safe, 
+make_active_path(order_id: order.id), method: :post, remote: true,
+class: "btn btn-success", title: "Make Active" %>
+<% end %>

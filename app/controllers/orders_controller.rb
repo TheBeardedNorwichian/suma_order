@@ -25,6 +25,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def make_active
+    Order.make_active(params[:order_id])
+  end
+
   private
 
     def order_params

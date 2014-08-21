@@ -43,4 +43,20 @@ class Order < ActiveRecord::Base
     order.save
   end
 
+  def self.current_order
+    Order.all.each do |order|
+      if order.active_order == true
+        return orderitems
+      end
+    end
+  end
+
+  def self.current_order
+    Order.all.each do |order|
+      if order.active_order == true
+        return order
+      end
+    end
+  end
+
 end

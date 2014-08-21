@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>    
   </head>
-  <body <% if signed_in? %>style="padding-top: 80px"<% end %>>
+  <body>
     <%= render 'layouts/header' %>
     <div class="container">
       <% flash.each do |key, value| %>

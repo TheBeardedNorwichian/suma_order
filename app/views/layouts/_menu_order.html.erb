@@ -1,5 +1,6 @@
 <ul id="user_header_order" class="dropdown-menu list-unstyled"> 
   <ul id="user_order_items" class="list-unstyled unstyled">
+    <p><strong>Order Closes: <%= current_user.orders.current_order.deadline %></strong></p>
     <% if current_user_orderitems %>
       <%current_user_orderitems.each do |oi| %>
       <li id="um_oi_<%= oi.id %>"><strong id="q_<%=oi.id%>"><%= oi.quantity %></strong> x <%= oi.item.description %></li>
